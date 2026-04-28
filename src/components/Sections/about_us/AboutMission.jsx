@@ -51,12 +51,12 @@ xl:px-[6.2rem]
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-orange-300/70 via-yellow-200/60 to-transparent" />
                 <div className="absolute inset-0 p-5 md:p-6 flex flex-col justify-between">
-                  <p className="text-black text-[clamp(1.08rem,1.2vw,1.05rem)]">
+                  <p className="text-black text-[clamp(1.2rem,1.2vw,1.05rem)]">
   Solving unknowns for <br />the known.
 </p>
-                  <h3 className="text-black text-3xl md:text-4xl font-semibold">
-                    MISSION
-                  </h3>
+                 <h3 className="text-[clamp(2.8rem,4vw,2.5rem)] font-semibold text-black">
+  MISSION
+</h3>
                 </div>
               </div>
 
@@ -70,11 +70,11 @@ xl:px-[6.2rem]
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                 <div className="absolute inset-0 p-5 md:p-6 flex flex-col justify-between">
-                  <p className="text-white text-[clamp(1.08rem,1.2vw,1.05rem)]">
+                  <p className="text-white text-[clamp(1.2rem,1.2vw,1.05rem)]">
                     Transforming lives by giving solutions for who, what, when,
                     where, why and how.
                   </p>
-                  <h3 className="text-white text-3xl md:text-4xl font-semibold">
+                  <h3 className="text-[clamp(2.8rem,4vw,2.5rem)] font-semibold text-white">
                     VISION
                   </h3>
                 </div>

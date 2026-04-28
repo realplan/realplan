@@ -6,30 +6,19 @@ import { Badge } from "../../shared";
 import founder1 from "../../../assets/about_us/founder_1.webp";
 import founder2 from "../../../assets/about_us/founder_2.webp";
 
-import { GridReveal } from "../../ui";
 import { useMotionValue, useSpring } from "framer-motion";
 
 export default function FoundersSection() {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const smoothX = useSpring(mouseX, { stiffness: 120, damping: 20 });
-  const smoothY = useSpring(mouseY, { stiffness: 120, damping: 20 });
 
   return (
     <section
       className="mt-[4rem] md:mt-[4rem] lg:mt-[4rem] relative px-[clamp(1rem,2vw+0.5rem,4rem)]
 xl:px-[6.2rem]
 2xl:px-[9rem]"
-      onPointerMove={(e) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        mouseX.set(e.clientX - rect.left);
-        mouseY.set(e.clientY - rect.top);
-      }}
+
     >
       {/* GRID REVEAL BACKGROUND: ONLY INSIDE THIS SECTION */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <GridReveal x={smoothX} y={smoothY} theme="golden_orange" radius="16.25rem" />
       </div>
 
       {/* BADGE */}
@@ -63,47 +52,47 @@ xl:px-[6.2rem]
           </p>
 
           {/* FOUNDERS GRID */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
 
-            {/* FOUNDER 1 */}
-            <div className="flex flex-col">
-              <div className="overflow-hidden rounded-xl aspect-square">
-                <Image
-                  src={founder1}
-                  alt="Founder 1"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+  {/* FOUNDER 1 */}
+  <div className="flex flex-col">
+    <div className="overflow-hidden rounded-xl aspect-square">
+      <Image
+        src={founder1}
+        alt="Founder 1"
+        className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 ease-in-out"
+      />
+    </div>
 
-              <h3 className="mt-4 text-[#FF8205] text-[1.4rem] sm:text-[1.75rem] font-medium">
-                A VENKATA SAI KASYAP
-              </h3>
+    <h3 className="mt-4 text-[#FF8205] text-[1.4rem] sm:text-[1.75rem] font-medium">
+      A VENKATA SAI KASYAP
+    </h3>
 
-              <p className="text-black/60 text-[1.125rem]">
-                Founder of Real plan Consulting
-              </p>
-            </div>
+    <p className="text-black/60 text-[1.125rem]">
+      Founder of Real plan Consulting
+    </p>
+  </div>
 
-            {/* FOUNDER 2 */}
-            <div className="flex flex-col">
-              <div className="overflow-hidden rounded-xl aspect-square">
-                <Image
-                  src={founder2}
-                  alt="Founder 2"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+  {/* FOUNDER 2 */}
+  <div className="flex flex-col">
+    <div className="overflow-hidden rounded-xl aspect-square">
+      <Image
+        src={founder2}
+        alt="Founder 2"
+        className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 ease-in-out"
+      />
+    </div>
 
-              <h3 className="mt-4 text-[#FF8205] text-[1.4rem] sm:text-[1.75rem] font-medium">
-                VINOTH S
-              </h3>
+    <h3 className="mt-4 text-[#FF8205] text-[1.4rem] sm:text-[1.75rem] font-medium">
+      VINOTH S
+    </h3>
 
-              <p className="text-black/60 text-[1.125rem]">
-                Founder of Real plan Consulting
-              </p>
-            </div>
+    <p className="text-black/60 text-[1.125rem]">
+      Founder of Real plan Consulting
+    </p>
+  </div>
 
-          </div>
+</div>
 
           {/* MOBILE TAGLINE (RIGHT ALIGNED) */}
           <div className="lg:hidden text-right mt-3">

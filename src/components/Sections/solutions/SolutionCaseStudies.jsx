@@ -3,39 +3,24 @@
 import Link from "next/link";
 import { Badge } from "@/components/shared";
 import { Button } from "../../ui";
-import { GridReveal } from "@/components/ui";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 
 export default function SolutionCaseStudies({ data }) {
-    const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
 
-  const smoothX = useSpring(mouseX, { stiffness: 120, damping: 20 });
-  const smoothY = useSpring(mouseY, { stiffness: 120, damping: 20 });
   if (!data) return null;
 
   const { badge, title, description, cta } = data;
 
   return (
-    <motion.section
-      onPointerMove={(e) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        mouseX.set(e.clientX - rect.left);
-        mouseY.set(e.clientY - rect.top);
-      }}
+    <section
       className="relative mb-[8rem] px-[clamp(1rem,2vw+0.5rem,4rem)]
 xl:px-[6.2rem]
 2xl:px-[9rem]"
     >
     {/* ✅ GRID REVEAL */}
       <div className="absolute inset-0 z-10 pointer-events-none">
-        <GridReveal
-          x={smoothX}
-          y={smoothY}
-          theme="golden_orange"
-          radius="16.25rem"
-        />
+
       </div>
       <div>
 
@@ -63,6 +48,6 @@ xl:px-[6.2rem]
         </div>
 
       </div>
-    </motion.section>
+    </section>
   );
 }

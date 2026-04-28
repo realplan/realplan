@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { Button } from "@/components/ui";
 import { Badge } from "@/components/shared";
-import { GridReveal } from "@/components/ui";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function SolutionHero({ data }) {
@@ -13,29 +12,13 @@ export default function SolutionHero({ data }) {
   const firstLine = words.slice(0, 3).join(" ");
   const secondLine = words.slice(3).join(" ");
 
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const smoothX = useSpring(mouseX, { stiffness: 120, damping: 20 });
-  const smoothY = useSpring(mouseY, { stiffness: 120, damping: 20 });
-
   return (
-    <motion.section
-      onPointerMove={(e) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        mouseX.set(e.clientX - rect.left);
-        mouseY.set(e.clientY - rect.top);
-      }}
+    <section
       className="relative py-[clamp(3rem,6vw,6.8rem)]"
     >
       {/* GRID REVEAL */}
       <div className="absolute inset-0 z-0 pointer-events-none global-grid">
-        <GridReveal
-          x={smoothX}
-          y={smoothY}
-          theme="golden_orange"
-          radius="16.25rem"
-        />
+
       </div>
 
       <div className="relative z-20 px-[clamp(1rem,2vw+0.5rem,4rem)] xl:px-[6.2rem] 2xl:px-[9rem]">
@@ -98,6 +81,6 @@ export default function SolutionHero({ data }) {
 
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

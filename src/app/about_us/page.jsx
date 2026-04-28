@@ -1,40 +1,81 @@
 "use client";
 
-import { AboutUsPage, FoundersSection, AwardsSection, MissionVisionSection } from "../../components/Sections";
+import {
+  AboutUsPage,
+  FoundersSection,
+  AwardsSection,
+  MissionVisionSection,
+} from "../../components/Sections";
 import { LogoCarousel, Badge } from "../../components/shared";
 import { Footer } from "../../components/layouts";
-import { Button } from "../../components/ui";
+import { Button, GridReveal } from "../../components/ui";
 import { useRouter } from "next/navigation";
 import { Header } from "@/components/shared";
 import logo_orange from "@/assets/Company_Logo/logo_orange.webp";
 
-
+import { useMotionValue, useSpring, motion } from "framer-motion";
 
 export default function AboutUs() {
   const router = useRouter();
 
+  // ✅ GRID LOGIC
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const smoothX = useSpring(mouseX, { stiffness: 120, damping: 20 });
+  const smoothY = useSpring(mouseY, { stiffness: 120, damping: 20 });
+
   return (
-  <>
-  <Header
-          logo={logo_orange}
-          buttonVariant="glow"
-          logoRedirect="/"
-  color="white"
-        />
-  <AboutUsPage />
-  <FoundersSection />
-  <AwardsSection />
-  <MissionVisionSection />
-  < LogoCarousel grayscale={false} />
-  <Footer
+    <>
+      {/* ✅ GRID REVEAL AREA */}
+      <motion.section
+        className="relative w-full overflow-hidden"
+        onPointerMove={(e) => {
+          const rect = e.currentTarget.getBoundingClientRect();
+          mouseX.set(e.clientX - rect.left);
+          mouseY.set(e.clientY - rect.top);
+        }}
+      >
+        {/* GRID LAYER */}
+        <div className="absolute inset-0 z-10 pointer-events-none">
+          <GridReveal
+            x={smoothX}
+            y={smoothY}
+            theme="golden_orange"
+            radius="16.25rem"
+          />
+        </div>
+
+        {/* CONTENT */}
+        <div className="relative z-20">
+          <Header
+            logo={logo_orange}
+            buttonVariant="glow"
+            logoRedirect="/"
+            color="white"
+          />
+
+          <AboutUsPage />
+          <FoundersSection />
+          <AwardsSection />
+          <MissionVisionSection />
+          <LogoCarousel grayscale={false} />
+        </div>
+      </motion.section>
+
+      {/* ❌ NO GRID REVEAL */}
+      <Footer
         hand={true}
         topContent={{
-         badge: <Badge text={"Let's talk business"} className="mt-[3rem]" />,
+          badge: (
+            <Badge text={"Let's talk business"} className="mt-[3rem]" />
+          ),
           heading: "Let's kick things off!",
           description: (
             <>
               We believe that every idea needs research. <br />
-              Take the first step: Contact us, and together, we will build a great future for your <br/> dreams.
+              Take the first step: Contact us, and together, we will build a
+              great future for your <br /> dreams.
             </>
           ),
           headingClass:
@@ -50,6 +91,6 @@ export default function AboutUs() {
           ),
         }}
       />
-  </>
+    </>
   );
 }

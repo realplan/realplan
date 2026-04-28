@@ -12,9 +12,11 @@ import star from "../../../assets/star.png";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
-import Frame_1 from "../../../assets/solution_carousel/Frame_1.webp";
+import Frame_1 from "@/assets/solution_carousel/Frame_1.webp";
+import Frame from "@/assets/solution_carousel/market_research.webp";
 import Frame_2 from "../../../assets/solution_carousel/Frame_2.webp";
 import Frame_3 from "../../../assets/solution_carousel/Frame_3.webp";
+import Frame_4 from "@/assets/solution_carousel/Frame_4.webp";
 import logo from "../../../assets/Company_Logo/logo_white.webp";
 import { useRouter } from "next/navigation";
 import tick from "../../../assets/tick.webp";
@@ -68,7 +70,7 @@ const smoothY = useSpring(mouseY, { stiffness: 120, damping: 20 });
       <motion.div
         layout
         className="
-          mt-30 lg:mt-[10.4375rem]
+          mt-10 lg:mt-[8em]
           relative z-20
           grid
           grid-cols-1
@@ -160,26 +162,32 @@ xl:px-[6.2rem]
               interval={2500}
               items={[
                 {
-                  image: Frame_1,
+                  image: Frame,
                   title: "Market Research",
                   description: "Turn insights into confident decisions.",
                   slug: "market-research",
                 },
+            {
+                  image: Frame_1,
+                  title: "Location Analysis",
+                  description: "Build scalable growth plans.",
+                  slug: "location-analysis",
+                },
                 {
                   image: Frame_2,
-                  title: "Business Strategy",
+                  title: "Market Feasibility",
                   description: "Build scalable growth plans.",
                   slug: "market-feasability-studies",
                 },
                 {
                   image: Frame_3,
-                  title: "Data Analytics",
+                  title: "Real Estate Research",
                   description: "Convert data into actionable insights.",
                   slug: "real-estate",
                 },
             {
-                  image: Frame_3,
-                  title: "Data Analytics",
+                  image: Frame_4,
+                  title: "Socio-Economic Research",
                   description: "Convert data into actionable insights.",
                   slug: "socio-economic",
                 },

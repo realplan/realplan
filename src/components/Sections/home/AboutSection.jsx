@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, animate, useMotionValue, useSpring } from "framer-motion";
-import { Button, GridReveal } from "../../ui";
+import { Button} from "../../ui";
 import {LogoCarousel, Badge} from "../../shared";
 import { useRouter } from "next/navigation";
 
@@ -32,12 +32,6 @@ function CountUp({ value, start }) {
 export default function AboutPage() {
   const statsRef = useRef(null);
   const [startCount, setStartCount] = useState(false);
-
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const smoothX = useSpring(mouseX, { stiffness: 120, damping: 20 });
-  const smoothY = useSpring(mouseY, { stiffness: 120, damping: 20 });
 
   const router = useRouter();
 
@@ -86,23 +80,12 @@ export default function AboutPage() {
   ];
 
   return (
-   <motion.div
+   <div
   className="relative px-[clamp(1rem,2vw+0.5rem,4rem)]
 xl:px-[6.2rem]
 2xl:px-[9rem]"
-  onPointerMove={(e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    mouseX.set(e.clientX - rect.left);
-    mouseY.set(e.clientY - rect.top);
-  }}
 >
       <div className="absolute inset-0 z-0 pointer-events-none">
-  <GridReveal
-    x={smoothX}
-    y={smoothY}
-    theme="golden_orange"
-    radius="14rem"   // slightly bigger for full-page feel
-  />
 </div>
     <div className="relative z-10">
         {/* ABOUT SECTION */}
@@ -154,7 +137,7 @@ xl:px-[6.2rem]
 
                 <div className="mt-10">
                   <div className="flex items-baseline gap-2">
-                    <h2 className="text-[3.5rem] font-medium text-black flex items-baseline gap-1">
+                    <h2 className="text-[3.1rem] font-medium text-black flex items-baseline gap-1">
                       <span className="flex items-baseline">
                         <CountUp value={item.value} start={startCount} />
                         <span className="ml-1">{item.suffix}</span>
@@ -197,6 +180,6 @@ xl:px-[6.2rem]
 </div>
 </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

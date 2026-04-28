@@ -5,7 +5,6 @@ import { Button } from "../../ui";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { sectorsData } from "@/data/sectorsData";
-import {GridReveal} from "../../ui";
 import {
   motion,
   useMotionValue,
@@ -15,33 +14,22 @@ import {
 
 export default function SectorSection() {
     const router = useRouter();
-    const mouseX = useMotionValue(0);
-    const mouseY = useMotionValue(0);
 
-    const smoothX = useSpring(mouseX, { stiffness: 120, damping: 20 });
-    const smoothY = useSpring(mouseY, { stiffness: 120, damping: 20 });
   return (
-    <motion.div
-  onPointerMove={(e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    mouseX.set(e.clientX - rect.left);
-    mouseY.set(e.clientY - rect.top);
-  }}
+    <div
   className="relative px-[clamp(1rem,4vw,6rem)] xl:px-[clamp(6rem,5vw,9rem)] mt-[clamp(4rem,6vw,6rem)] overflow-hidden"
 >
     <div className="absolute inset-0 z-0 pointer-events-none h-full w-full">
-  <GridReveal
-    x={smoothX}
-    y={smoothY}
-    theme="golden_orange"
-    radius="16.25rem"
-  />
+
 </div>
 
       {/* Top */}
       <div className="hidden sm:flex sm:items-center sm:justify-between">
         <Badge text="Industries We Serve" />
-        <Button text="More sectors" variant="white" onClick={() => router.push("/sectors")} />
+        <Button text="More sectors" variant="white" onClick={() => {
+  console.log("clicked");
+  router.push("/sectors");
+}} />
       </div>
 
       <div className="sm:hidden">
@@ -150,6 +138,6 @@ export default function SectorSection() {
         })}
 
       </div>
-    </motion.div>
+    </div>
   );
 }

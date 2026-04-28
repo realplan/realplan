@@ -2,39 +2,21 @@
 
 import { Badge } from "@/components/shared";
 import Image from "next/image";
-import { GridReveal } from "@/components/ui";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function SolutionTypes({ data }) {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const smoothX = useSpring(mouseX, { stiffness: 120, damping: 20 });
-  const smoothY = useSpring(mouseY, { stiffness: 120, damping: 20 });
 
   if (!data) return null;
-
 
   const { badge, title, subtitle, items } = data;
   console.log("last",items)
 
   return (
-    <motion.section
-      onPointerMove={(e) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        mouseX.set(e.clientX - rect.left);
-        mouseY.set(e.clientY - rect.top);
-      }}
+    <section
       className="relative py-[clamp(3rem,6vw,6rem)] px-[clamp(1rem,2vw+0.5rem,4rem)] xl:px-[6.2rem] 2xl:px-[9rem]"
     >
       {/* GRID REVEAL */}
       <div className="absolute inset-0 z-10 pointer-events-none">
-        <GridReveal
-          x={smoothX}
-          y={smoothY}
-          theme="golden_orange"
-          radius="16.25rem"
-        />
       </div>
 
       {/* HEADER */}
@@ -97,7 +79,7 @@ export default function SolutionTypes({ data }) {
                     {item.title}
                   </h3>
 
-                  <p className="text-gray-600 text-[1rem] leading-relaxed">
+                  <p className="text-gray-600 text-[1rem] leading-snug">
                     {item.description}
                   </p>
                 </div>
@@ -106,6 +88,6 @@ export default function SolutionTypes({ data }) {
           ))}
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

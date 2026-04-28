@@ -9,7 +9,7 @@ export default function CaseStudiesHero() {
   const router = useRouter();
 
   return (
-    <div className="relative z-10 mt-15 sm:mt-28 md:mt-[8.9375rem] px-[clamp(1rem,2vw+0.5rem,4rem)]
+    <div className="relative z-10 mt-9 sm:mt-28 md:mt-[5rem] px-[clamp(1rem,2vw+0.5rem,4rem)]
     xl:px-[6.2rem]
     2xl:px-[9rem]">
 

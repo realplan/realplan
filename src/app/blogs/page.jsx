@@ -1,22 +1,19 @@
 "use client";
 
-import {
-  HomePage,
-  AboutPage,
-  SectorSection,
-  SolutionSection
-} from "../components/Sections/home";
-import { TestimonialCarousel } from "../components/shared/Carousel/TestimonialCarousel";
-import { Footer } from "../components/layouts";
-import { Badge } from "../components/shared";
-import { Button, GridReveal } from "../components/ui";
+import { BlogsHero, BlogsList } from "@/components/Sections/blogs";
+import { Header } from "@/components/shared";
+import logo_orange from "@/assets/Company_Logo/logo_orange.webp";
+import LogoCarousel from "../../components/shared/Carousel/LogoCarousel";
+import { Footer } from "@/components/layouts";
+import { Badge } from "@/components/shared";
+import { Button, GridReveal } from "@/components/ui";
 import { useRouter } from "next/navigation";
 import { useMotionValue, useSpring, motion } from "framer-motion";
 
-export default function Page() {
+
+export default function Blogs() {
   const router = useRouter();
 
-  // ✅ GRID REVEAL LOGIC
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -25,10 +22,7 @@ export default function Page() {
 
   return (
     <>
-      {/* ❌ NO GRID REVEAL */}
-      <HomePage />
-
-      {/* ✅ GRID REVEAL ONLY FOR THESE SECTIONS */}
+      {/* ✅ ONLY THIS PART HAS GRID REVEAL */}
       <motion.section
         className="relative w-full overflow-hidden"
         onPointerMove={(e) => {
@@ -37,7 +31,7 @@ export default function Page() {
           mouseY.set(e.clientY - rect.top);
         }}
       >
-        {/* GRID LAYER */}
+        {/* GRID REVEAL */}
         <div className="absolute inset-0 z-10 pointer-events-none">
           <GridReveal
             x={smoothX}
@@ -49,14 +43,20 @@ export default function Page() {
 
         {/* CONTENT */}
         <div className="relative z-20">
-          <AboutPage />
-          <SectorSection />
-          <TestimonialCarousel className="px-4 sm:px-6 md:px-0" />
+          <Header
+            logo={logo_orange}
+            buttonVariant="glow"
+            logoRedirect="/"
+            color="white"
+          />
+
+          <BlogsHero />
+          <BlogsList />
+          <LogoCarousel grayscale={true} />
         </div>
       </motion.section>
-      <SolutionSection />
 
-      {/* ❌ NO GRID REVEAL */}
+      {/* ❌ NO GRID REVEAL HERE */}
       <Footer
         hand={true}
         topContent={{
@@ -72,13 +72,12 @@ export default function Page() {
           headingClass:
             "text-[2.3rem] sm:text-[2.3rem] font-regular leading-snug text-white",
           descriptionClass:
-            "text-[clamp(1.1rem,2.8vw,1.125rem)] mx-auto leading-[1.5] line-clamp-4",
+            "text-[clamp(1.1rem,2.8vw,1.125rem)] mx-auto leading-[1.5]",
           cta: (
             <Button
               text="Get Started"
               variant="glow"
               onClick={() => router.push("/about_us")}
-              className="py-[clamp(0.5rem,2vw,0.5rem)]"
             />
           ),
         }}

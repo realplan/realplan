@@ -4,7 +4,7 @@ import logo_orange from "../../../assets/Company_Logo/logo_orange.webp";
 import cycle from "../../../assets/about_us/cycle.webp";
 import { Badge } from "../../shared";
 import { useRouter } from "next/navigation";
-import { Button, GridReveal } from "../../ui";
+import { Button } from "../../ui";
 import Image from "next/image";
 
 import { useMotionValue, useSpring } from "framer-motion";
@@ -12,24 +12,12 @@ import { useMotionValue, useSpring } from "framer-motion";
 export default function AboutUsPage() {
   const router = useRouter();
 
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const smoothX = useSpring(mouseX, { stiffness: 120, damping: 20 });
-  const smoothY = useSpring(mouseY, { stiffness: 120, damping: 20 });
-
   return (
     <div
       className="relative text-white"
-      onPointerMove={(e) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        mouseX.set(e.clientX - rect.left);
-        mouseY.set(e.clientY - rect.top);
-      }}
     >
       {/* GRID REVEAL BACKGROUND: FULL PAGE INCLUDING HEADER */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <GridReveal x={smoothX} y={smoothY} theme="golden_orange" radius="16.25rem" />
       </div>
 
       {/* HEADER */}
@@ -38,7 +26,7 @@ export default function AboutUsPage() {
       </div>
 
       {/* CONTENT */}
-      <div className="relative z-10 mt-15 sm:mt-28 md:mt-[8.9375rem] max-w-6xl px-[clamp(1rem,2vw+0.5rem,4rem)]
+      <div className="relative z-10 mt-10 lg:mt-[8em] max-w-6xl px-[clamp(1rem,2vw+0.5rem,4rem)]
 xl:px-[6.2rem]
 2xl:px-[9rem]">
 
