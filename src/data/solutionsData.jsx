@@ -333,33 +333,6 @@ export const SOLUTIONS = {
         author: "Real Plan Consulting Team",
       },
 
-      grid: {
-        primary: {
-          title: "SITE SUITABILITY ANALYSIS",
-          description:
-            "Evaluating physical location conditions and suitability for commercial or industrial development.",
-          image: Frame,
-        },
-
-        qualitative: {
-          title: "DEMOGRAPHIC ANALYSIS",
-          description:
-            "Understanding population patterns, income levels, and customer behavior in target areas.",
-        },
-
-        quantitative: {
-          title: "DATA DRIVEN FORECASTING",
-          description:
-            "Using statistical models to predict demand, growth potential, and market viability.",
-        },
-
-        secondary: {
-          title: "COMPETITOR LOCATION STUDY",
-          description:
-            "Analyzing competitor presence, saturation levels, and strategic positioning opportunities.",
-          image: Frame,
-        },
-      },
     },
 
     typesSection: {
@@ -486,33 +459,6 @@ export const SOLUTIONS = {
         author: "Real Plan Consulting Team",
       },
 
-      grid: {
-        primary: {
-          title: "LAND RESEARCH",
-          description:
-            "In-depth study of land parcels, their attributes, legal status, development potential, and future proposals for strategic investment decisions.",
-          image: Frame_3,
-        },
-
-        qualitative: {
-          title: "RESIDENTIAL RESEARCH",
-          description:
-            "Comprehensive analysis of residential real estate trends, consumer preferences, pricing dynamics, and demand-supply patterns.",
-        },
-
-        quantitative: {
-          title: "COMMERCIAL RESEARCH",
-          description:
-            "Data-driven assessment of commercial real estate performance including office, retail, and mixed-use segments with absorption and vacancy metrics.",
-        },
-
-        secondary: {
-          title: "INDUSTRIAL RESEARCH",
-          description:
-            "Evaluation of industrial real estate segments including warehousing, logistics parks, and manufacturing zones with growth projections.",
-          image: Frame_3,
-        },
-      },
     },
 
     typesSection: {
@@ -615,33 +561,6 @@ export const SOLUTIONS = {
         author: "Real Plan Consulting Team",
       },
 
-      grid: {
-        primary: {
-          title: "SOCIAL RESEARCH",
-          description:
-            "Study of social structures, norms, and behavioral patterns that influence communities and public decision-making processes.",
-          image: Frame_4,
-        },
-
-        qualitative: {
-          title: "ECONOMIC RESEARCH",
-          description:
-            "Analysis of economic indicators, market dynamics, income levels, and livelihood patterns across urban and rural settings.",
-        },
-
-        quantitative: {
-          title: "POLICY RESEARCH",
-          description:
-            "Evaluation of government policies, infrastructure plans, and their measurable impact on human development and social outcomes.",
-        },
-
-        secondary: {
-          title: "DEMOGRAPHIC RESEARCH",
-          description:
-            "In-depth profiling of population characteristics, migration trends, age structures, and socio-demographic shifts.",
-          image: Frame_4,
-        },
-      },
     },
 
     typesSection: {

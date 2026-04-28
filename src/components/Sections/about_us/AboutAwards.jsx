@@ -36,7 +36,7 @@ xl:px-[6.2rem]
           <div className="flex flex-col gap-6 lg:w-[55%] items-center lg:items-start">
             <Badge text="Awards and Recognition" variant="white" />
 
-            <h2 className="text-[clamp(1.71rem,3.3vw,2.66rem)] leading-[1.2] text-[#2A2A2A]">
+            <h2 className="text-[clamp(1.6rem,3.5vw,3rem)] leading-[1.2] text-[#2A2A2A]">
   Certificate of recognition from silicon India magazine and
   Swiftnlift business magazine
 </h2>

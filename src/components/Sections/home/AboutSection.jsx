@@ -129,10 +129,15 @@ xl:px-[6.2rem]
             {stats.map((item, index) => (
               <div
                 key={index}
-                className="bg-[#F5F5F5] rounded-2xl p-4 flex flex-col justify-between gap-10 hover:shadow-md transition-all duration-300"
+                className="bg-[#F5F5F5] rounded-2xl p-4 flex flex-col justify-between gap-10"
               >
-                <p className="text-black/40 leading-snug text-body">
-                  {item.desc}
+<p
+  className="text-black/40 leading-snug"
+  style={{
+    fontSize:
+      "clamp(calc(1rem * 0.912), calc(1vw * 0.912), calc(1.25rem * 0.912))",
+  }}
+>             {item.desc}
                 </p>
 
                 <div className="mt-10">

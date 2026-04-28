@@ -97,13 +97,8 @@ xl:px-[6.2rem]
 
         {/* HEADER */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-         <h2
-  className="
-    text-[clamp(1.8rem,4vw,2.8rem)] lg:text-[clamp(2.8rem,3vw,3.5rem)]
-    leading-tight
-    text-black
-  "
->
+                     <h2 className="text-[clamp(1.6rem,3.5vw,2.5rem)] leading-[1.2] text-black">
+
   Real Plans Consulting’s <br />
   impact in their own words
 </h2>

@@ -26,7 +26,7 @@ export default function AboutUsPage() {
       </div>
 
       {/* CONTENT */}
-      <div className="relative z-10 mt-10 lg:mt-[8em] max-w-6xl px-[clamp(1rem,2vw+0.5rem,4rem)]
+      <div className="relative z-10 mt-10 lg:mt-[8em] px-[clamp(1rem,2vw+0.5rem,4rem)]
 xl:px-[6.2rem]
 2xl:px-[9rem]">
 
@@ -36,14 +36,17 @@ xl:px-[6.2rem]
         </div>
 
         {/* MAIN HEADING */}
-       <h1 className="text-[clamp(1.6rem,3.5vw,2.3rem)] leading-[1.2] mb-4">
+       <h1 className="text-[clamp(1.6rem,3.5vw,3rem)] leading-[1.2] mb-4">
   <span className="text-black">Our team.</span>{" "}
   <span className="text-black/60">
-    works with you to deliver actionable research insights and a
-    structured strategy,
+    works with you to deliver actionable research
+    <br />
+    insights and a structured strategy,
   </span>{" "}
   <span className="text-black">
-    enabling confident decision-making and market validation.
+    enabling confident
+    <br />
+    decision-making and market validation.
   </span>
 </h1>
         {/* PARAGRAPH 1 */}

@@ -4,7 +4,9 @@ import {
   HomePage,
   AboutPage,
   SectorSection,
-  SolutionSection
+  SolutionSection,
+  ConversationSection,
+  WhyChooseUs
 } from "../components/Sections/home";
 import { TestimonialCarousel } from "../components/shared/Carousel/TestimonialCarousel";
 import { Footer } from "../components/layouts";
@@ -50,11 +52,14 @@ export default function Page() {
         {/* CONTENT */}
         <div className="relative z-20">
           <AboutPage />
+      <SolutionSection />
+          <WhyChooseUs />
+      <ConversationSection />
           <SectorSection />
           <TestimonialCarousel className="px-4 sm:px-6 md:px-0" />
         </div>
       </motion.section>
-      <SolutionSection />
+
 
       {/* ❌ NO GRID REVEAL */}
       <Footer

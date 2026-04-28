@@ -16,7 +16,9 @@ export default function Header({
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
+
+  // NEW: controls which dropdown is active
+  const [activeMenu, setActiveMenu] = useState(null); // "solutions" | "about" | null
 
   const SOLUTIONS_LINKS = [
     { label: "Market Research", href: "/solutions/market-research" },
@@ -41,11 +43,11 @@ export default function Header({
 
   const handleNavigate = (path) => {
     setIsMenuOpen(false);
-    setIsExpanded(false);
+    setActiveMenu(null);
     if (path) router.push(path);
   };
 
-  const showGlass = scrolled || isExpanded;
+  const showGlass = scrolled || activeMenu;
 
   const textColor =
     showGlass
@@ -69,7 +71,7 @@ export default function Header({
         }`}
       >
         <div
-          onMouseLeave={() => setIsExpanded(false)}
+          onMouseLeave={() => setActiveMenu(null)}
           className="relative w-full transition-all duration-300"
         >
           {/* GLASS */}
@@ -83,7 +85,7 @@ export default function Header({
               rounded-lg
               transition-all duration-500
               ${showGlass ? "bg-black/40 backdrop-blur-md" : "bg-transparent"}
-              ${isExpanded ? "h-[260px]" : "h-[60px]"}
+              ${activeMenu ? "h-[260px]" : "h-[60px]"}
             `}
           />
 
@@ -102,25 +104,59 @@ export default function Header({
                   <Image
                     src={logo}
                     alt="Logo"
-                    className="w-[8.5rem] h-[3rem] object-contain"
+                    className="w-[8.5rem] h-[3rem] object-contain cursor-pointer"
                   />
                 </div>
 
-                {/* NAV — gap-20 to give columns enough breathing room */}
+                {/* NAV */}
                 <nav className={`hidden lg:flex items-center gap-20 ${textColor}`}>
                   {navItems.map((item) => (
-                    <span
+                    <div
                       key={item.name}
+                      className="relative"
                       onMouseEnter={() => {
-                        if (item.name === "Solutions" || item.name === "About Us") {
-                          setIsExpanded(true);
-                        }
+                        if (item.name === "Solutions") setActiveMenu("solutions");
+                        else if (item.name === "About Us") setActiveMenu("about");
+                        else setActiveMenu(null);
                       }}
-                      onClick={() => item.path && handleNavigate(item.path)}
-                      className="cursor-pointer hover:opacity-80 transition"
                     >
-                      {item.name}
-                    </span>
+                      <span
+                        onClick={() => item.path && handleNavigate(item.path)}
+                        className="cursor-pointer hover:opacity-80 transition whitespace-nowrap"
+                      >
+                        {item.name}
+                      </span>
+
+                      {/* Solutions dropdown — positioned below this exact nav item */}
+                      {item.name === "Solutions" && activeMenu === "solutions" && (
+                        <div className="absolute top-full left-0 pt-6 flex flex-col gap-3 text-white z-10">
+                          {SOLUTIONS_LINKS.map((link, i) => (
+                            <span
+                              key={i}
+                              onClick={() => handleNavigate(link.href)}
+                              className="cursor-pointer text-sm hover:text-[#FF8205] transition whitespace-nowrap"
+                            >
+                              {link.label}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* About dropdown — positioned below this exact nav item */}
+                      {item.name === "About Us" && activeMenu === "about" && (
+                        <div className="absolute top-full left-0 pt-6 flex flex-col gap-3 text-white z-10">
+                          {ABOUT_LINKS.map((link, i) => (
+                            <span
+                              key={i}
+                              onClick={() => handleNavigate(link.href)}
+                              className="cursor-pointer text-sm hover:text-[#FF8205] transition whitespace-nowrap"
+                            >
+                              {link.label}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   ))}
 
                   <Button
@@ -130,7 +166,7 @@ export default function Header({
                   />
                 </nav>
 
-                {/* MOBILE TOGGLE */}
+                {/* MOBILE */}
                 <div className="lg:hidden">
                   <button onClick={() => setIsMenuOpen(true)}>
                     <HiMenu className="w-7 h-7 text-white" />
@@ -138,53 +174,6 @@ export default function Header({
                 </div>
               </div>
 
-              {/* EXPANDED DROPDOWN — must use same gap-20 as nav above */}
-              {isExpanded && (
-                <div className="w-full px-[clamp(1rem,2vw+0.5rem,4rem)] xl:px-[6.2rem] 2xl:px-[9rem] pb-4">
-                  <div className="flex items-start justify-end gap-20 text-white">
-
-                    {/* SOLUTIONS column */}
-                    <div className="flex flex-col gap-3">
-                      {SOLUTIONS_LINKS.map((item, i) => (
-                        <span
-                          key={`sol-${i}`}
-                          onClick={() => handleNavigate(item.href)}
-                          className="cursor-pointer text-sm hover:text-[#FF8205] transition-colors duration-200 whitespace-nowrap"
-                        >
-                          {item.label}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* ABOUT US column */}
-                    <div className="flex flex-col gap-3">
-                      {ABOUT_LINKS.map((item, i) => (
-                        <span
-                          key={`abt-${i}`}
-                          onClick={() => handleNavigate(item.href)}
-                          className="cursor-pointer text-sm hover:text-[#FF8205] transition-colors duration-200 whitespace-nowrap"
-                        >
-                          {item.label}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Invisible spacers — mirror "Case studies", "Blogs", Button exactly */}
-                    <span className="invisible pointer-events-none whitespace-nowrap">
-                      Case studies
-                    </span>
-
-                    <span className="invisible pointer-events-none whitespace-nowrap">
-                      Blogs
-                    </span>
-
-                    <div className="invisible pointer-events-none">
-                      <Button text="Get started" variant={buttonVariant} />
-                    </div>
-
-                  </div>
-                </div>
-              )}
 
             </div>
           </header>

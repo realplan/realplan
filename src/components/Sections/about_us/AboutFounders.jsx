@@ -32,7 +32,7 @@ xl:px-[6.2rem]
         {/* LEFT SIDE */}
         <div className="flex flex-col justify-between lg:w-[35%]">
           <div>
-            <h2 className="text-[clamp(1.6rem,3.5vw,2.2rem)] leading-[1.2] text-black max-w-[28rem]">
+            <h2 className="text-[clamp(1.6rem,3.5vw,2.5rem)] leading-[1.2] text-black max-w-[28rem]">
               The minds behind Real Plan Consulting
             </h2>
           </div>

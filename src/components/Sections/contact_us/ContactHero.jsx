@@ -37,9 +37,11 @@ xl:px-[6.2rem]
 
               <div className="flex flex-col gap-[1rem]">
                 {/* Heading */}
-                <h1 className="text-[clamp(1.8rem,3.5vw,3rem)] leading-[1.1] text-black max-w-[clamp(20rem,40vw,35rem)]">
-                  Partner with us and get amazing insights
-                </h1>
+<h1 className="text-[clamp(1.6rem,3.5vw,3rem)] leading-[1.2] mb-4">
+  Partner with us and get
+  <br />
+  amazing insights
+</h1>
 
                 {/* Subtitle */}
                 <p className="text-[#2A2A2A]/70 text-[clamp(1rem,1.2vw,1.375rem)] leading-relaxed">

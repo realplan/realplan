@@ -90,7 +90,7 @@ function RowReveal({ items, progress }) {
          <motion.div
   style={{ background: bgColors[i] }}
   onClick={() => router.push(item.href)}
-  className="cursor-pointer flex min-h-[260px] h-[clamp(260px,28vh,320px)] flex-col justify-between rounded-xl border border-black/5 p-6 shadow-[0_8px_20px_rgba(0,0,0,0.15)]"
+  className="cursor-pointer flex h-[clamp(160px,24vh,320px)] flex-col justify-between rounded-xl border border-black/5 p-6 shadow-[0_8px_20px_rgba(0,0,0,0.15)]"
 >
             <div className="flex items-start justify-between gap-4">
               <h3 className="text-[clamp(1.2rem,2vw,1.6rem)] font-medium">
@@ -120,12 +120,12 @@ export default function SolutionBackgroundCard({ children }) {
 
   const { scrollYProgress } = useScroll({
   target: sectionRef,
-  offset: ["start start", "end end"],
+  offset: ["start start", "end start"],
 });
 
 const smoothProgress = useSpring(scrollYProgress, {
-  stiffness: 80,
-  damping: 25,
+  stiffness: 35,
+  damping: 30,
   restDelta: 0.001,
 });
 
@@ -210,12 +210,9 @@ const smoothProgress = useSpring(scrollYProgress, {
       <section
         ref={sectionRef}
         className="relative w-full hidden md:block"
-        style={{ height: "550vh" }}
       >
         <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
-
           <div className="absolute inset-0 bg-black z-0" />
-
           <div
             className="absolute bottom-0 left-0 right-0 h-[70%] blur-[40px]"
             style={{
