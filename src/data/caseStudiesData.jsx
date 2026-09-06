@@ -1,6 +1,40 @@
+import Frame_1 from "@/assets/Frame 2085665781.webp";
+import holistic_market_analysis_study from "@/assets/case_study/market_research/holistic_market_analysis_study.webp";
+import secondary_market_intelligence_research from "@/assets/case_study/market_research/secondary_market_intelligence_research.webp";
+import industry_market_intelligence_study from "@/assets/case_study/market_research/industry_market_intelligence_study.webp";
+import qualitative_focus_group_discussions_research from "@/assets/case_study/market_research/qualitative_focus_group_discussions_research.webp";
+import consumer_market_research_study from "@/assets/case_study/market_research/consumer_market_research_study.webp";
+import computer_assisted_telephonic_interview_cati_study from "@/assets/case_study/market_research/computer_assisted_telephonic_interview_cati_study.webp";
+import retail_outlet_establishment_study from "@/assets/case_study/location_analysis/retail_outlet_establishment_study.webp";
+import vacant_land_feasibility_study from "@/assets/case_study/location_analysis/vacant_land_feasibility_study.webp";
+import location_feasibility_analysis from "@/assets/case_study/location_analysis/location_feasibility_analysis.webp";
+import spatial_location_analysis from "@/assets/case_study/location_analysis/spatial_location_analysis.webp";
+import market_research_concept_feasibility from "@/assets/case_study/market_feasibility/market_research_concept_feasibility.webp";
+import market_penetration_feasibility from "@/assets/case_study/market_feasibility/market_penetration_feasibility.webp";
+import b2b_b2c_feasibility_study from "@/assets/case_study/market_feasibility/b2b_b2c_feasibility_study.webp";
+import location_feasibility_market_study from "@/assets/case_study/market_feasibility/location_feasibility_market_study.webp";
+import secondary_research_feasibilitystudy from "@/assets/case_study/market_feasibility/secondary_research_feasibilitystudy.webp";
+import digital_software_feasibility_study from "@/assets/case_study/market_feasibility/digital_software_feasibility_study.webp";
+import socio_economic_cultural_rural_study from "@/assets/case_study/Socio Economic research /socio_economic_cultural_rural_study.webp";
+import affordable_housing_for_urban_poor from "@/assets/case_study/Socio Economic research /affordable_housing_for_urban_poor.webp";
+import research_on_implementation_of_smart_city_mission from "@/assets/case_study/Socio Economic research /research_on_implementation_of_smart_city_mission.webp";
+import public_opinion_polling_for_party_image_assessment from "@/assets/case_study/Political Research/public_opinion_polling_for_party_image_assessment.webp";
+import public_sentiment_needs_an_online_opinion_polling from "@/assets/case_study/Political Research/public_sentiment_needs_an_online_opinion_polling.webp";
+import market_research_study_on_the_indian_pump_industry from "@/assets/case_study/Core industry research/market_research_study_on_the_indian_pump_industry.webp";
+import dealer_perception_study from "@/assets/case_study/Core industry research/dealer_perception_study.webp";
+import market_feasibility_study_for_a_manufacturing_plant from "@/assets/case_study/Core industry research/market_feasibility_study_for_a_manufacturing_plant.webp";
+import brand_perception_assessment_benchmarking_study from "@/assets/case_study/Brand Consulting/brand_perception_assessment_benchmarking_study.webp";
+import brand_marketing_concepts_testing_study from "@/assets/case_study/Brand Consulting/brand_marketing_concepts_testing_study.webp";
+import consumer_preference_data_collection_study from "@/assets/case_study/Markert data collection/consumer_preference_data_collection_study.webp";
+import consumer_perception_data_collection_study from "@/assets/case_study/Markert data collection/consumer_perception_data_collection_study.webp";
+import mega_integrated_township_feasibility_study from "@/assets/case_study/Real estate/mega_integrated_township_feasibility_study_1.webp";
+import real_estate_assessment_study_1 from "@/assets/case_study/Real estate/real_estate_assessment_study_1.webp";
+import real_estate_financial_review_1 from "@/assets/case_study/Real estate/real_estate_financial_review_1.webp";
+import sez_feasibility_study_1 from "@/assets/case_study/Real estate/sez_feasibility_study_1.webp";
+
 export const CASE_STUDIES = [
   {
-    category: "Market Research",
+    category: "MARKET RESEARCH",
     items: [
       {
         title: "Holistic Market Analysis Study",
@@ -18,7 +52,7 @@ export const CASE_STUDIES = [
           "General public surveys": [],
           "Measures to improve overall efficiency were suggested": []
         },
-        image: "Frame_1",
+        image: holistic_market_analysis_study,
       },
 
       {
@@ -36,7 +70,7 @@ export const CASE_STUDIES = [
           ],
           "Facilitated collaboration between Japanese firms and Indian startups": []
         },
-        image: "Frame_1",
+        image: secondary_market_intelligence_research,
       },
 
       {
@@ -62,7 +96,7 @@ export const CASE_STUDIES = [
           "Future expansion and vendor ecosystem analysis": [],
           "Market forecast and outlook": []
         },
-        image: "Frame_1",
+        image: industry_market_intelligence_study,
       },
 
       {
@@ -85,8 +119,24 @@ export const CASE_STUDIES = [
           "Purchase frequency": [],
           "Purchase locations": []
         },
-        image: "Frame_1",
-      },
+        image: consumer_market_research_study,
+      },{
+    title: "Qualitative Focus Group Discussion Research",
+    description:
+      "To carry out a qualitative study for gaining deeper insights of the mindset of pre-final year and final year students enrolled in professional courses regarding their future plans of studies and careers.",
+    client: "Popular educational institute",
+    researchType: "Focus group discussions",
+    approach: [
+      "Panel recruitment consisting of freelance placement trainers",
+      "Study abroad educational consultants",
+      "Teachers of reputed entrance exam and foreign language coaching institutes",
+      "Trainers of institutes offering certified courses"
+    ],
+    outcomes: {
+      "Provided inputs for rolling out apt educational services and programs catering to current student aspirations": []
+    },
+    image: qualitative_focus_group_discussions_research
+  },
 
       {
         title: "Computer Assisted Telephonic Interview (CATI) Study",
@@ -105,13 +155,13 @@ export const CASE_STUDIES = [
           "Customer satisfaction levels": [],
           "Improvement recommendations": []
         },
-        image: "Frame_1",
+        image: computer_assisted_telephonic_interview_cati_study,
       }
     ],
   },
 
   {
-    category: "Location Analysis",
+    category: "LOCATION ANALYSIS",
     items: [
       {
         title: "Retail Outlet Establishment Study",
@@ -129,7 +179,7 @@ export const CASE_STUDIES = [
           "General public surveys": [],
           "Effective measures to improve overall efficiency were suggested": []
         },
-        image: "Frame_1",
+        image: retail_outlet_establishment_study,
       },
 
       {
@@ -141,15 +191,18 @@ export const CASE_STUDIES = [
           "Primary and secondary research, market intelligence, market surveys",
         approach: ["In depth desk research", "Face to face interviews"],
         outcomes: {
-          "The current market conditions were assessed": [],
-          "Status of current functioning was ascertained": [],
-          "Holistic competitor evaluation": [],
-          "Patient feedback surveys": [],
-          "Perception analysis via depth interviews": [],
-          "General public surveys": [],
-          "Effective measures to improve overall efficiency were suggested": []
+          "Identifying market potential clusters": [],
+          "Population density assessment": [],
+          "Existing fashion retail outlet density (competitor) assessment": [],
+          "Prospective buyer’s catchment density": [],
+          "Suggestion of hotspots in all potential clusters": [],
+          "Insights from consumer interviews:": ["Nature of purchase of clothing - branded vs unbranded",
+              "Frequency of purchase","Place of purchase","Dislikes about regular place of purchase",
+              "Preferred days (including occasions) and time of purchase","Preferred mode of purchase- retail outlets vs online retail",
+              "Pricing of clothing","Factors considered for choosing a place of purchase","Ranking of various important attributes related to fashion retail outlets",
+              "Willingness to try a new urban-centric fashion retail outlet"]
         },
-        image: "Frame_1",
+        image: vacant_land_feasibility_study,
       },
 
       {
@@ -169,7 +222,7 @@ export const CASE_STUDIES = [
           "General public surveys": [],
           "Effective measures to improve overall efficiency were suggested": []
         },
-        image: "Frame_1",
+        image: location_feasibility_analysis,
       },
 
       {
@@ -198,63 +251,15 @@ export const CASE_STUDIES = [
           "Location finalisation pointers": [],
           "Proposed outlets with ranking and influence mapping": []
         },
-        image: "Frame_1",
+        image: spatial_location_analysis,
       }
     ],
   },{
-  "category": "Market Feasibility",
-  "items": [
-    {
-      "title": "Market Research Concept Feasibility Study",
-      "description": "To conduct a market research concept feasibility study for a digital product company which wants to launch an app which serves as a flat listing portal and also helps people to connect with a compatible roommate.",
-      "client": "A mobile app tech service provider",
-      "researchType": "Market intelligence, market analysis, geo mapping and user surveys",
-      "approach": [
-        "In depth desk research",
-        "Face to face interviews"
-      ],
-      "outcomes": {
-        "The current market conditions were assessed": [],
-        "Status of current functioning was ascertained": [],
-        "Holistic competitor evaluation": [],
-        "Patient feedback surveys": [],
-        "Perception analysis via depth interviews": [],
-        "General public surveys": [],
-        "Effective measures to improve overall efficiency were suggested": []
-      },
-      "image": "Frame_1"
-    },
-    {
-      "title": "Market Penetration Feasibility Study",
-      "description": "To conduct a market entry feasibility study for an agarbatti (incense sticks) brand.",
-      "client": "An already established FMCG manufacturer brand",
-      "researchType": "Market intelligence, market analysis, geo mapping and user surveys",
-      "approach": [
-        "Desk research",
-        "GIS analysis",
-        "User perception surveys",
-        "Branding solutions"
-      ],
-      "outcomes": {
-        "Existing market scenario assessment": [],
-        "Feasibility of the concept in the market was ascertained": [],
-        "Market analysis": [],
-        "Target user hotspots assessment using GIS analysis": [],
-        "User perception assessment via depth interviews": [],
-        "Market size estimation": [
-          "TAM (Total addressable market)",
-          "SAM (Service available market)",
-          "SOM (Service obtainable market)"
-        ],
-        "Risk analysis": [],
-        "Effective market positioning strategies": []
-      },
-      "image": "Frame_1"
-    }
-  ]
+  "category": "MARKET FEASIBILITY",
+  "items": [  {    title: "Market Research Concept Feasibility Study",    description:      "To conduct a market research concept feasibility study for a digital product company which wants to launch an app which serves as a flat listing portal and also helps people to connect with a compatible roommate.",    client: "A mobile app tech service provider",    researchType:      "Market intelligence, market analysis, geo mapping and user surveys",    approach: ["In depth desk research", "Face to face interviews"],    outcomes: {      "The current market conditions were assessed": [],      "Status of current functioning was ascertained": [],      "Holistic competitor evaluation": [],      "Patient feedback surveys": [],      "Perception analysis via depth interviews with patients": [],      "General public surveys": [],      "Effective measures to improve the overall efficiency of the hospital were suggested": []    },    image: market_research_concept_feasibility  },  {    title: "Market Penetration Feasibility Study",    description:      "To conduct a market entry feasibility study for an agarbatti (incense sticks) brand.",    client: "An already established FMCG manufacturer brand",    researchType:      "Market intelligence, market analysis, geo mapping and user surveys",    approach: [      "Desk research",      "GIS analysis",      "User perception surveys",      "Branding solutions"    ],    outcomes: {      "Existing market scenario assessment": [],      "Feasibility of such a concept in the market was ascertained": [],      "Market analysis": [],      "Target users hotspots assessment using GIS analysis": [],      "User perception assessment via depth interviews with the target audience": [],      "Detailed market size estimation": [        "TAM (Total addressable market)",        "SAM (Service available market)",        "SOM (Service obtainable market)"      ],      "Risk analysis": [],      "Effective market positioning strategies": []    },    image: market_penetration_feasibility  },  {    title: "B2B & B2C Feasibility Study",    description:      "Market research feasibility study of baby wear and layette essential products in Chennai.",    client: "An emerging all under one roof baby products brand",    researchType:      "Market intelligence, depth interviews and secondary research",    approach: [      "Mapping of maternity healthcare profile",      "Market intelligence inputs from maternity care units",      "In-depth interviews with stakeholders namely new moms, pediatricians, gynecologists, nurses",      "Secondary research of baby care products in online retail"    ],    outcomes: {      "Maps of maternity care hospitals under various typologies": [        "Location",        "Scale",        "Gifting program criterion",        "Hospital type"      ],      "Market intelligence inputs from maternity care units namely": [        "Number of child deliveries/month",        "Gifting program details like gifting kit contents",        "Key decision makers"      ],      "Insights from new moms": [        "Place of purchase of baby wear and care products",        "Preference of online retail platforms",        "Preference of branded products",        "Favourite brands",        "Average spending on baby wear and care products",        "Factors contributing to decision making",        "Opinion on gift kit contents",        "Opinion on organic and natural baby wear and care products",        "Awareness of harmful chemicals used in baby products",        "Allergies developed due to usage of certain baby products"      ],      "Insights from nurses": [        "Gift kit contents",        "Satisfaction status related to items currently in use for new born care",        "Suggestions to new mothers"      ],      "Insights from doctors (pediatricians and gynecologists)": [        "Opinion on recommendation of baby products",        "Common complaints from parents",        "Advice to parents",        "Willingness to endorse a brand for baby products"      ],      "Assessment of baby products in online retail": [        "Platforms: Amazon, Flipkart, Snapdeal, Firstcry",        "Products: Gift kits, mittens, bloomers, dresses, baby kits, swaddles"      ],      "Prospects for successful penetration into maternity gifting package segment in hospitals & online retail market": []    },    image: b2b_b2c_feasibility_study  },  {    title: "Location Feasibility Market Study",    description:      "To conduct a market feasibility study to establish a cafe in Chennai.",    client: "New entrant",    researchType: "Consumer interviews",    approach: [      "Identify coffee addicts (target group)",      "Conducted in-depth interviews"    ],    outcomes: {      "Population assessment, connectivity study and competitor analysis": [],      "Location and financial feasibility analysis for the proposed location of cafe": [],      "Understanding the following aspects from target group": [        "Varieties of coffee consumed",        "Frequency of cafe visits",        "Distance willing to travel to reach a cafe",        "Pricing"      ]    },    image: location_feasibility_market_study  },  {    title: "Secondary Research Study",    description:      "To conduct a scientific secondary research study for establishing a preschool in Chennai.",    client: "Upcoming preschool brand",    researchType: "Secondary research",    approach: [      "Data collection through secondary research",      "Density mapping",      "Connectivity and accessibility assessment"    ],    outcomes: {      "Demographic assessment": [],      "Economic profiling": [],      "Preschool density map": [],      "Connectivity and accessibility map": [],      "Influence zone mapping (primary, secondary and tertiary zones)": []    },    image: secondary_research_feasibilitystudy  },  {    title: "Digital Software Feasibility Study",    description:      "To check the feasibility for developing an exclusive end to end all-inclusive global restaurant management software in Chennai, Coimbatore, Hyderabad, Visakhapatnam, Bangalore & Cochin.",    client: "US based software development company",    researchType:      "Concept testing survey for developing an all-inclusive global restaurant management software (quantitative survey using a structured questionnaire)",    approach: [      "Identified target restaurants",      "Covered all kinds of restaurants including stand-alone restaurants, theme-based restaurants, dine-in restaurants in mall food courts",      "Conducted in-depth interviews"    ],    outcomes: {      "Insights of the following aspects related to restaurant management software": [        "Current softwares in use at restaurants",        "Software features",        "Software pricing",        "Software maintenance and costs involved",        "Benefits and challenges faced by restaurants with respect to the use of current softwares",        "New set of features that restaurants would like to have in a restaurant management software",        "Willingness to try a new restaurant management software"      ]    },    image: digital_software_feasibility_study  }]
 },
 {
-    category: "Real Estate Research",
+    category: "REAL ESTATE RESEARCH",
     items: [
       {
         title: "Real Estate Assembly Study",
@@ -296,7 +301,7 @@ export const CASE_STUDIES = [
             "Recommending product mix options along with typology & sizes"
           ]
         },
-        image: "Frame_1"
+        image: real_estate_assessment_study_1
       },
 
       {
@@ -351,7 +356,7 @@ export const CASE_STUDIES = [
             "Pricing and financial feasibility analysis"
           ]
         },
-        image: "Frame_1"
+        image: mega_integrated_township_feasibility_study
       },
 
       {
@@ -391,7 +396,7 @@ export const CASE_STUDIES = [
          "Product mix solutions" :[],
          "Financial feasibility analysis":[]
         },
-        image: "Frame_1"
+        image: sez_feasibility_study_1
       },
 
       {
@@ -408,7 +413,7 @@ export const CASE_STUDIES = [
            "Established seniority among members for selecting plots": [],
            "Interest calculations for various rates of interest for erratic payments were arrived":[]
         },
-        image: "Frame_1"
+        image: real_estate_financial_review_1
       },
     ]
   }, {category: "SOCIO-ECONOMIC RESEARCH",
@@ -433,7 +438,7 @@ export const CASE_STUDIES = [
       "Personalities of historical importance": [],
       "Aspirations of the village community": []
     },
-    image: "Frame_1"
+    image: socio_economic_cultural_rural_study
   },
   {
     title: "Affordable Housing for Urban Poor",
@@ -456,7 +461,7 @@ export const CASE_STUDIES = [
         "Assessment of various housing schemes"
       ]
     },
-    image: "Frame_1"
+    image: affordable_housing_for_urban_poor
   },
   {
     title: "Research on Implementation of Smart City Mission",
@@ -490,7 +495,7 @@ export const CASE_STUDIES = [
       "Forecasting growth, demand and employment potential": [],
       "Smart city proposal with a new land-use map and break up": []
     },
-    image: "Frame_1"
+    image: research_on_implementation_of_smart_city_mission
   }
 ]},{
   category: "POLITICAL RESEARCH",
@@ -507,7 +512,7 @@ export const CASE_STUDIES = [
       outcomes: {
         "Provided the results of the popularity and reach of the political party among the eligible voters.": []
       },
-      image: "Frame_1"
+      image: public_opinion_polling_for_party_image_assessment
     },
     {
       title: "Public Sentiments & Needs: An Online Opinion Polling",
@@ -521,21 +526,7 @@ export const CASE_STUDIES = [
       outcomes: {
         "Gained insights about the satisfaction levels of the citizens with respect to the handling of the pandemic crisis by the government machinery and also other necessary measures that they would like the government to roll out to ease their living burdens.": []
       },
-      image: "Frame_1"
-    },
-    {
-      title: "Public Sentiments & Needs: An Online Opinion Polling",
-      description:
-        "To conduct an opinion poll to analyze the satisfaction status among the citizens with regards to the handling of the pandemic crisis by the government machinery and to know what additional measures they would want the government to undertake so that they would be able to sail through the emergency crisis with minimal damages",
-      client: "Self-initiated research",
-      researchType: "Online surveys",
-      approach: [
-        "Non-probability sampling involving convenience, purposive and snowball sampling"
-      ],
-      outcomes: {
-        "Gained insights about the satisfaction levels of the citizens with respect to the handling of the pandemic crisis by the government machinery and also other necessary measures that they would like the government to roll out to ease their living burdens.": []
-      },
-      image: "Frame_1"
+      image: public_sentiment_needs_an_online_opinion_polling
     }
   ]
 },
@@ -565,7 +556,7 @@ export const CASE_STUDIES = [
         "Key demand drivers": [],
         "Marketing strategies": []
       },
-      image: "Frame_1"
+      image: market_research_study_on_the_indian_pump_industry
     },
     {
       title: "Dealer Perception Study",
@@ -589,7 +580,7 @@ export const CASE_STUDIES = [
         "Major expectations from the brand": [],
         "Factors impacting the sales of RECIP compressors": []
       },
-      image: "Frame_1"
+      image: dealer_perception_study
     },
     {
       title: "Market Feasibility Study for a Manufacturing Plant",
@@ -611,7 +602,7 @@ export const CASE_STUDIES = [
         "Market forecast and outlook after Covid’19 pandemic": [],
         "Demand assessment": []
       },
-      image: "Frame_1"
+      image: market_feasibility_study_for_a_manufacturing_plant
     }
   ]
 },
@@ -640,7 +631,7 @@ export const CASE_STUDIES = [
         "Evaluated the major positives from the promoters and major negatives from the detractors.": [],
         "Best developer assessment.": []
       },
-      image: "Frame_1"
+      image: brand_perception_assessment_benchmarking_study
     },
     {
       title: "Brand Marketing Concepts Testing Study",
@@ -665,7 +656,7 @@ export const CASE_STUDIES = [
           "Purchase intent"
         ]
       },
-      image: "Frame_1"
+      image: brand_marketing_concepts_testing_study
     }
   ]
 },
@@ -688,7 +679,7 @@ export const CASE_STUDIES = [
         "Distinctly differentiated the consumer behaviour of whey protein powder users vis-à-vis plant-based protein powder users.": [],
         "Covered the consumer purchase aspects, opinion on competitor brands and associated health benefits.": []
       },
-      image: "Frame_1"
+      image: consumer_preference_data_collection_study
     },
     {
       title: "Consumer Perception Data Collection Study",
@@ -708,7 +699,7 @@ export const CASE_STUDIES = [
           "Consumer opinion on the product pricing, product availability, perceived benefits, environmental concerns were also assessed."
         ]
       },
-      image: "Frame_1"
+      image: consumer_perception_data_collection_study
     }
   ]
 }

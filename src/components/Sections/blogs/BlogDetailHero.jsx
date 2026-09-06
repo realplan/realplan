@@ -3,11 +3,10 @@
 import Image from "next/image";
 import { Badge } from "@/components/shared";
 import founder1 from "../../../assets/about_us/founder_1.webp";
-import Frame_1 from "../../../assets/Frame 2085665781-2.webp";
-
 
 
 export default function BlogDetailHero({ data }) {
+
   const {
     title,
     description,
@@ -16,6 +15,8 @@ export default function BlogDetailHero({ data }) {
     date,
     category,
     image,
+    founder,
+    name
   } = data;
 
   return (
@@ -46,7 +47,12 @@ export default function BlogDetailHero({ data }) {
 
   {/* Right - Description */}
   <div className="min-w-0">
-    <p className="text-black/60 text-[clamp(0.9rem,1.5vw,1.05rem)] leading-relaxed">
+    <p className="
+  text-[clamp(1rem,1.4vw,1.4rem)]
+  lg:text-[clamp(1.2rem,1.0vw,1.7rem)]
+  text-[#2A2A2A]/60
+  leading-relaxed
+">
       {description}
     </p>
   </div>
@@ -62,7 +68,7 @@ export default function BlogDetailHero({ data }) {
   {/* Image */}
   <div className="w-[42px] h-[42px] relative rounded-full overflow-hidden border-2 border-[#FF8205]">
     <Image
-      src={founder1}
+      src={founder}
       alt={author}
       fill
       className="object-cover"
@@ -72,7 +78,7 @@ export default function BlogDetailHero({ data }) {
   {/* Text */}
   <div className="flex flex-col justify-center">
     <h3 className="text-[#FF8205] text-[clamp(0.9rem,1.2vw,1.125rem)] font-medium leading-none">
-      A VENKATA SAI KASYAP
+      {name}
     </h3>
     <p className="text-sm text-gray-500 leading-none mt-1">
       {role}
@@ -106,11 +112,11 @@ export default function BlogDetailHero({ data }) {
         <div className="relative w-full h-[clamp(12.5rem,45vw,37.25rem)] rounded-2xl overflow-hidden">
           {image && (
   <Image
-    src={Frame_1}
-    alt={title}
-    fill
-    className="object-cover grayscale"
-  />
+  src={image}
+  alt={title}
+  fill
+  className="object-cover"
+/>
 )}
         </div>
       </div>

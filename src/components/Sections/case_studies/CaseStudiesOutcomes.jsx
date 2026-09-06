@@ -1,17 +1,23 @@
 "use client";
 
-import { useState } from "react";
 import { CaseStudyDetails } from "@/components/Sections/case_studies";
 import { CASE_STUDIES } from "@/data/caseStudiesData";
-import { ChevronDown } from "lucide-react";
 
-export default function CaseStudiesOutcomes() {
-  const [active, setActive] = useState(CASE_STUDIES[0].category);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const activeData = CASE_STUDIES.find((c) => c.category === active);
+export default function CaseStudiesOutcomes({
+  selectedCategory = CASE_STUDIES[0].category,
+  onCategoryChange,
+}) {
+  const activeData = CASE_STUDIES.find(
+    (c) => c.category === selectedCategory
+  );
+
+  const handleCategorySelect = (category) => {
+    onCategoryChange?.(category);
+  };
 
   return (
     <section
+      id="case-outcomes"
       className="w-full px-[clamp(1rem,2vw+0.5rem,4rem)]
       xl:px-[6.2rem]
       2xl:px-[9rem]"
@@ -33,15 +39,15 @@ export default function CaseStudiesOutcomes() {
 
         {/* DESKTOP TABS */}
         <div className="flex-1 hidden lg:block">
-          <div className="flex flex-wrap gap-3 pb-[7.0625rem] border-b border-black mb-[clamp(2rem,5vw,3rem)]">
+          <div className="flex flex-wrap gap-3 pb-[7.0625rem] ">
             {CASE_STUDIES.map((tab) => {
-              const isActive = active === tab.category;
+              const isActive = selectedCategory === tab.category;
               return (
                 <button
                   key={tab.category}
-                  onClick={() => setActive(tab.category)}
+                  onClick={() => handleCategorySelect(tab.category)}
                   className={`
-                    px-3 py-0.5 rounded-full text-[1.125rem] whitespace-nowrap
+                    px-3 py-0.5 rounded-full text-[1rem] whitespace-nowrap
                     border transition-all duration-300
                     ${
                       isActive
@@ -55,16 +61,16 @@ export default function CaseStudiesOutcomes() {
               );
             })}
           </div>
-          <CaseStudyDetails data={activeData?.items} />
+
+          <div className="border-t border-black pt-4 bg-white">
+            <CaseStudyDetails data={activeData?.items} />
+          </div>
         </div>
 
-        {/* MOBILE DROPDOWN */}
+        {/* MOBILE VERSION */}
         <div className="lg:hidden w-full">
 
-          {/* Heading + pill on same line */}
-          <div className="flex items-center justify-between gap-2 mb-6 w-full min-w-0">
-
-            {/* Heading — shrinks if needed */}
+          <div className="flex items-center gap-3 mb-6 w-full min-w-0">
             <h2 className="text-[clamp(1.1rem,4vw,1.4rem)] font-normal leading-tight shrink-0">
               <span className="text-[#2A2A2A]/50 whitespace-nowrap">
                 Proven outcomes.
@@ -75,56 +81,24 @@ export default function CaseStudiesOutcomes() {
               </span>
             </h2>
 
-       {/* Orange pill trigger */}
-<div className="relative shrink-0">
-  <button
-    onClick={() => setMobileOpen((prev) => !prev)}
-className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#FF8205] text-black font-normal text-[clamp(0.75rem,3vw,1rem)] uppercase tracking-wide whitespace-nowrap"  >
-    <span>{active} ({activeData?.items.length})</span>
-    <ChevronDown
-  className={`transition-transform duration-300 w-5 h-5 ${
-    mobileOpen ? "rotate-180" : "rotate-0"
-  }`}
-/>
-  </button>
-
-  {/* Dropdown — same width as button, more rounded */}
-  {mobileOpen && (
-    <div className="absolute top-[110%] right-0 w-full z-50 bg-white border border-[#FF8205] rounded-3xl overflow-hidden shadow-lg">
-      {CASE_STUDIES.map((tab) => {
-        const isActive = active === tab.category;
-        return (
-          <button
-            key={tab.category}
-            onClick={() => {
-              setActive(tab.category);
-              setMobileOpen(false);
-            }}
-            className={`
-              w-full text-left px-5 py-3 text-[0.95rem] uppercase tracking-wide transition-colors duration-200
-              ${
-                isActive
-                  ? "bg-[#FF8205] text-black font-semibold"
-                  : "text-black hover:bg-[#FF8205]/20"
-              }
-            `}
-          >
-            {tab.category} ({tab.items.length})
-          </button>
-        );
-      })}
-    </div>
-  )}
-</div>
-
+            <select
+              value={selectedCategory}
+              onChange={(e) => handleCategorySelect(e.target.value)}
+              className="text-black text-[0.9rem] border border-black rounded-2xl flex-1 min-w-0 px-2 pr-2 py-1"
+            >
+              {CASE_STUDIES.map((tab) => (
+                <option key={tab.category} value={tab.category}>
+                  {tab.category} ({tab.items.length})
+                </option>
+              ))}
+            </select>
           </div>
 
-          {/* Content */}
-          <div className="border-t border-black pt-4">
-  <CaseStudyDetails data={activeData?.items} />
-</div>
-        </div>
+          <div className="border-t border-black pt-4 bg-white">
+            <CaseStudyDetails data={activeData?.items} />
+          </div>
 
+        </div>
       </div>
     </section>
   );

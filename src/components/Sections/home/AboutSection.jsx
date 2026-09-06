@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, animate, useMotionValue, useSpring } from "framer-motion";
+import { animate } from "framer-motion";
 import { Button} from "../../ui";
 import {LogoCarousel, Badge} from "../../shared";
 import { useRouter } from "next/navigation";
+import gsap from "gsap";
 
 
 /* ================= COUNT UP (TRIGGER ON VIEW) ================= */
@@ -31,6 +32,11 @@ function CountUp({ value, start }) {
 /* ================= PAGE ================= */
 export default function AboutPage() {
   const statsRef = useRef(null);
+  const revealScopeRef = useRef(null);
+  const badgeRef = useRef(null);
+  const headingRefs = useRef([]);
+  const buttonRef = useRef(null);
+  const brandTextRef = useRef(null);
   const [startCount, setStartCount] = useState(false);
 
   const router = useRouter();
@@ -52,30 +58,119 @@ export default function AboutPage() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    let observer;
+
+    const ctx = gsap.context(() => {
+      const revealTargets = [
+        badgeRef.current,
+        ...headingRefs.current,
+        buttonRef.current,
+        brandTextRef.current,
+      ].filter(Boolean);
+
+      gsap.set(revealTargets, {
+        autoAlpha: 0,
+        x: -18,
+        clipPath: "inset(0 100% 0 0)",
+      });
+
+      const timeline = gsap.timeline({
+        paused: true,
+        defaults: {
+          duration: 0.64,
+          ease: "power2.out",
+        },
+      });
+
+      timeline.to(badgeRef.current, {
+        autoAlpha: 1,
+        x: 0,
+        clipPath: "inset(0 0% 0 0)",
+        duration: 0.74,
+      });
+
+      timeline.to(
+        headingRefs.current,
+        {
+          autoAlpha: 1,
+          x: 0,
+          clipPath: "inset(0 0% 0 0)",
+          stagger: 0.12,
+        },
+        "-=0.28"
+      );
+
+      timeline.to(
+        buttonRef.current,
+        {
+          autoAlpha: 1,
+          x: 0,
+          clipPath: "inset(0 0% 0 0)",
+          duration: 0.78,
+        },
+        "-=0.36"
+      );
+
+      timeline.to(
+        brandTextRef.current,
+        {
+          autoAlpha: 1,
+          x: 0,
+          clipPath: "inset(0 0% 0 0)",
+          duration: 0.8,
+        },
+        "-=0.12"
+      );
+
+      observer = new IntersectionObserver(
+  ([entry]) => {
+    if (entry.isIntersecting) {
+      timeline.play();
+      observer?.disconnect();
+    }
+  },
+  {
+    threshold: 0, // ⬅️ trigger immediately
+    rootMargin: "0px 0px -30% 0px", // ⬅️ trigger earlier BEFORE visible
+  }
+);
+
+      if (revealScopeRef.current) {
+        observer.observe(revealScopeRef.current);
+      }
+    }, revealScopeRef);
+
+    return () => {
+      observer?.disconnect();
+      ctx.revert();
+    };
+  }, []);
+
   const stats = [
     {
       value: 10,
       suffix: "+",
-      subtitle: "Years of Excellence",
-      desc: "For a decade we have delivered market intelligence and consulting solutions",
+      subtitle: "Years of Expertise",
+      desc: "For more than a decade we have delivered spot on and accurate market intelligence solutions.",
     },
     {
-      value: 750,
+      value: 600,
       suffix: "+",
       subtitle: "Clients served",
-      desc: "Our work has supported more than 750+ organisations with research, clear insights and strategic guidance across diverse markets and industries.",
+      desc: "Our work has supported more than 600+ organisations with research, clear insights and strategic guidance across diverse markets and industries.",
     },
     {
-      value: 1000,
+      value: 2000,
       suffix: "+",
       subtitle: "Projects completed",
-      desc: "With more than 1,000+ projects completed, we bring depth, consistency, and reliability to every research and consulting engagement.",
+      desc: "With more than 2,000+ projects completed, we bring depth, consistency, and reliability to every research and consulting engagement.",
     },
     {
       value: 98,
       suffix: "%",
-      subtitle: "Clients satisfaction",
-      desc: "Our high client satisfaction is driven by a focus on quality, clarity, and actionable insights",
+      subtitle: "Client satisfaction",
+      desc: "Client satisfaction is driven by our committed focus on quality, clear insights, and actionable recommendations.",
     },
   ];
 
@@ -83,16 +178,18 @@ export default function AboutPage() {
    <div
   className="relative px-[clamp(1rem,2vw+0.5rem,4rem)]
 xl:px-[6.2rem]
-2xl:px-[9rem]"
+2xl:px-[9rem] mb-[4rem]"
 >
       <div className="absolute inset-0 z-0 pointer-events-none">
 </div>
-    <div className="relative z-10">
+    <div ref={revealScopeRef} className="relative z-10">
         {/* ABOUT SECTION */}
         <section className="w-full text-white">
           <div className="py-10 flex flex-col lg:flex-row items-baseline justify-between gap-10 lg:gap-[21.5rem]">
             <div className="max-w-4xl">
-              <Badge text="About Real Plan Consulting" />
+              <div ref={badgeRef} className="w-fit will-change-transform">
+                <Badge text="About Real Plan Consulting" />
+              </div>
               <h2 className="
   text-[clamp(1.4rem,1.5vw+0.8rem,3rem)]
   text-[#6B6B6B]
@@ -103,22 +200,37 @@ xl:px-[6.2rem]
   lg:mt-[3rem]
 ">
   <span className="text-black">
-    We are one of those niche companies <br />
-    who provide end-to-end business <br />
-    consulting
+    <span
+      ref={(el) => {
+        headingRefs.current[0] = el;
+      }}
+      className="inline-block will-change-transform"
+    >
+      We are a one stop destination for
+    </span>
+    <br />
   </span>{" "}
   <span>
-    and support services for all <br /> businesses across all sectors.
+    <span
+      ref={(el) => {
+        headingRefs.current[3] = el;
+      }}
+      className="inline-block will-change-transform"
+    >
+      all business advisory and support services.
+    </span>
   </span>
 </h2>
             </div>
 
             <div className="shrink-0 w-full lg:w-auto flex justify-start lg:justify-end lg:translate-y-15">
+              <div ref={buttonRef} className="will-change-transform">
               <Button
   text="Know more"
   variant="white"
   onClick={() => router.push("/about_us")}
 />
+              </div>
             </div>
           </div>
         </section>
@@ -142,7 +254,7 @@ xl:px-[6.2rem]
 
                 <div className="mt-10">
                   <div className="flex items-baseline gap-2">
-                    <h2 className="text-[3.1rem] font-medium text-black flex items-baseline gap-1">
+                    <h2 className="text-[clamp(2.5rem,5vw,3rem)] font-medium text-black flex items-baseline gap-1">
                       <span className="flex items-baseline">
                         <CountUp value={item.value} start={startCount} />
                         <span className="ml-1">{item.suffix}</span>
@@ -166,15 +278,17 @@ xl:px-[6.2rem]
   {/* LEFT TEXT */}
   <div className="w-full lg:w-[35%] mb-[1.5rem] lg:mb-0">
 
+    <div ref={brandTextRef} className="will-change-transform">
     <h3 className="text-[clamp(1.15rem,1.2vw,1.7rem)]
   text-[#2A2A2A]/50
   leading-relaxed">
-      The world’s leading brands work with{" "}
+      Leading brands choose{" "}
       <br />
       <span className="font-medium text-[#2A2A2A]">
         Real Plan Consulting
       </span>
     </h3>
+    </div>
   </div>
 
   {/* RIGHT CAROUSEL */}

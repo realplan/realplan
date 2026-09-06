@@ -5,13 +5,17 @@ import Frame_1 from "../../../assets/Frame 2085665781-2.webp";
 import { SOLUTIONS } from "@/data/solutionsData";
 import BlogDetailContent from "@/components/sections/blogs/BlogDetailContent";
 import AlternativeSolutions from "@/components/sections/blogs/BlogDetailAlternative";
-import LogoCarousel from "../../../components/shared/Carousel/LogoCarousel";
 import { Footer } from "@/components/layouts";
-import { Badge } from "@/components/shared";
+import { Badge, LogoCarousel} from "@/components/shared";
 import { Button } from "@/components/ui";
 import Link from "next/link";
 import { BLOGS } from "@/data/blogsData";
 
+export async function generateStaticParams() {
+  return BLOGS.map((blog) => ({
+    slug: blog.slug,
+  }));
+}
 
 export default async function Page({ params }) {
 
@@ -23,6 +27,16 @@ export default async function Page({ params }) {
     return <div className="p-10">Blog not found</div>;
   }
 
+const alternativeBlogs = BLOGS
+    .filter((b) => b.slug !== slug) // remove current blog
+    .slice(0, 3) // limit to 3
+    .map((b) => ({
+      image: b.image,
+      title: b.title,
+      description: b.description,
+      slug: b.slug, // optional (for navigation)
+    }));
+
   return (
     <main>
         <Header
@@ -33,13 +47,15 @@ export default async function Page({ params }) {
         />
       <BlogDetailHero data={blog} />
       <BlogDetailContent content={blog.content} />
-      <AlternativeSolutions />
-    <LogoCarousel grayscale={true} />
+      <AlternativeSolutions blogs={alternativeBlogs} />
+    <section className="py-7">
+           <LogoCarousel grayscale={true} />
+           </section>
     <Footer
         hand={true}
         topContent={{
          badge: <Badge text={"Let's talk business"} />,
-          heading: "Let's kick things off!",
+          heading: "Tell us your requirement",
           description: (
             <>
               We believe that every idea needs research. <br />
@@ -50,7 +66,7 @@ export default async function Page({ params }) {
             "text-[2.3rem] sm:text-[2.3rem] font-regular leading-snug text-white",
           descriptionClass: "text-[clamp(1.1rem,2.8vw,1.125rem)] mx-auto leading-[1.5] line-clamp-4",
           cta: (
-              <Link href="/about_us">
+              <Link href="/contact_us">
             <Button
               text="Get Started"
               variant="glow"

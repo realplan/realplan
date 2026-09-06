@@ -23,7 +23,7 @@ const cards = [
 export default function WhyChooseUs() {
   return (
     <section
-      className="w-full py-20 flex flex-col gap-[clamp(1rem,1.25vw,1.25rem)]
+      className="w-full flex flex-col gap-[clamp(1rem,1.25vw,1.25rem)]
         px-[clamp(1rem,2vw+0.5rem,4rem)]
         xl:px-[6.2rem]
         2xl:px-[9rem]"
@@ -42,7 +42,8 @@ export default function WhyChooseUs() {
           Our Philosophy is to Deliver
         </h2>
 
-        <div className="flex flex-col text-right shrink-0">
+        {/* RIGHT SIDE (Desktop only) */}
+        <div className="hidden lg:flex flex-col text-right shrink-0">
           <h4 className="text-[#FF8205] text-[clamp(1.16rem,1.2vw,1.3rem)] font-normal">
             Our philosophy is to deliver
           </h4>
@@ -53,7 +54,14 @@ export default function WhyChooseUs() {
       </div>
 
       {/* Subtitle */}
-      <h3 className="text-[clamp(1rem,1.4vw,1.4rem)] lg:text-[clamp(1.2rem,1.0vw,1.7rem)] text-[#2A2A2A]/80 leading-relaxed">
+      <h3
+        className="
+        text-[clamp(1rem,1.4vw,1.4rem)]
+        lg:text-[clamp(1.2rem,1.0vw,1.7rem)]
+        text-[#2A2A2A]/80
+        leading-relaxed
+      "
+      >
         We help organisations make confident decisions by evaluating feasibility,
         long-term
         <br />
@@ -63,29 +71,39 @@ export default function WhyChooseUs() {
 
       {/* Cards */}
       <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-  {cards.map((card, index) => (
-    <div
-      key={index}
-      className="bg-[#F5F5F5] rounded-2xl p-7 flex flex-col justify-between gap-6 h-full"
-    >
-      {/* Content */}
-      <p
-  className="text-black/40 leading-snug"
-  style={{
-    fontSize:
-      "clamp(calc(1rem * 0.912), calc(1vw * 0.912), calc(1.25rem * 0.912))",
-  }}
->
-        {card.content}
-      </p>
+        {cards.map((card, index) => (
+          <div
+            key={index}
+            className="bg-[#F5F5F5] rounded-2xl p-4 flex flex-col h-full gap-7"
+          >
+            {/* Content */}
+            <p
+              className="text-black/40 leading-snug"
+              style={{
+                fontSize:
+                  "clamp(calc(1rem * 0.912), calc(1vw * 0.912), calc(1.25rem * 0.912))",
+              }}
+            >
+              {card.content}
+            </p>
 
-      {/* Heading (always bottom aligned) */}
-      <h2 className="text-[3.1rem] font-medium text-black flex items-baseline gap-1">
-        {card.heading}
-      </h2>
-    </div>
-  ))}
-</div>
+            {/* Heading */}
+            <h2 className="text-[3.1rem] font-medium text-black mt-auto">
+              {card.heading}
+            </h2>
+          </div>
+        ))}
+      </div>
+
+      {/* RIGHT SIDE (Mobile only - moved below cards) */}
+      <div className="lg:hidden flex flex-col text-right mt-2">
+        <h4 className="text-[#FF8205] text-[clamp(1.16rem,1.2vw,1.3rem)] font-normal">
+          Our philosophy is to deliver
+        </h4>
+        <p className="text-black text-[0.9rem] mt-1">
+          — Real Plan Consulting Team
+        </p>
+      </div>
     </section>
   );
 }

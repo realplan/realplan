@@ -9,12 +9,13 @@ import Instagram from "../../../assets/social_media/InstagramLogo.webp";
 import Linkedin from "../../../assets/social_media/LinkedinLogo.webp";
 import { GridReveal } from "../../ui";
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Footer({
   showWave = true,
   bg = "bg-black",
   hand = false,
+  topImage = hand ? Hand : null,
   topContent = {
     badge: null,
     heading: "Let's Build Something Great",
@@ -29,19 +30,18 @@ export default function Footer({
   const mouseY = useMotionValue(0);
   const smoothX = useSpring(mouseX, { stiffness: 80, damping: 20 });
   const smoothY = useSpring(mouseY, { stiffness: 80, damping: 20 });
-  const router = useRouter();
   const SOLUTIONS_LINKS = [
   { label: "Market Research", href: "/solutions/market-research" },
   { label: "Location Analysis", href: "/solutions/location-analysis" },
-  { label: "Market Feasibility", href: "/solutions/market-feasability-studies" },
-  { label: "Real Estate Research", href: "/solutions/real-estate" },
-  { label: "Socio-Economic Research", href: "/solutions/socio-economic" },
+  { label: "Market Feasibility", href: "/solutions/market-feasibility-studies" },
+  { label: "Real Estate Research", href: "/solutions/real-estate-research" },
+  { label: "Socio-Economic Research", href: "/solutions/socio-economic-research" },
   { label: "Political Research", href: "/solutions/political-research" },
 ];
 const EXTRA_LINKS = [
   { label: "Case Studies", href: "/case_studies" },
   { label: "Blogs", href: "/blogs" },
-  { label: "Contacts", href: "/contact_us" },
+  { label: "Contact us", href: "/contact_us" },
 ];
 
   return (
@@ -65,13 +65,11 @@ const EXTRA_LINKS = [
       </div>
 
       {/* 🔝 TOP SECTION */}
-      <div
-        className={`relative z-20 min-h-[40vh] justify-center ${!hand ? bg : ""}`}
-      >
-        {hand && (
+      <div className="relative z-20 min-h-[40vh] justify-center">
+        {topImage && (
           <div className="absolute inset-0 z-10">
             <Image
-              src={Hand}
+              src={topImage}
               alt="Hand Background"
               className="
   object-contain
@@ -87,7 +85,11 @@ const EXTRA_LINKS = [
         )}
 
         {/* TOP CONTENT */}
-        <div className="relative z-20 w-full text-white text-center px-4 sm:px-6 md:px-0 flex flex-col gap-5 sm:gap-5 mt-[5rem]">
+        <div
+          className={`relative z-20 w-full text-white text-center px-4 sm:px-6 md:px-0 flex flex-col gap-5 sm:gap-5 mt-[5rem] ${
+            topImage ? "" : "pb-8"
+          }`}
+        >
           {topContent.badge && <div className="mb-2">{topContent.badge}</div>}
           {topContent.heading && (
             <h2 className={topContent.headingClass}>{topContent.heading}</h2>
@@ -103,11 +105,16 @@ const EXTRA_LINKS = [
 
       {/* 🔻 MAIN FOOTER */}
       <div
-        className="relative z-30 py-10 text-white px-[clamp(1rem,2vw+0.5rem,4rem)]
-xl:px-[6.2rem]
-2xl:px-[9rem]
-  mt-[6rem] sm:mt-[14rem] md:mt-[18rem] lg:mt-[20rem]"
-      >
+  className={`relative z-30 py-10 text-white
+  px-[clamp(1rem,2vw+0.5rem,4rem)]
+  xl:px-[6.2rem]
+  2xl:px-[9rem]
+  ${
+    hand
+      ? "mt-[6rem] sm:mt-[14rem] md:mt-[18rem] lg:mt-[20rem]"
+      : "mt-[2rem] sm:mt-[4rem] md:mt-[6rem] lg:mt-[8rem]"
+  }`}
+>
         <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-10 md:gap-0 max-w-full mx-auto">
           {/* LEFT */}
           <div className="flex flex-col space-y-4 min-w-[10rem]">
@@ -128,12 +135,11 @@ xl:px-[6.2rem]
           </div>
 
           {/* CENTER: Nav links */}
-          {/* CENTER: Nav links */}
-          <div className="flex justify-center">
+          <div className="flex">
             <div
               className="
       grid grid-cols-2
-      gap-x-[2.5rem] gap-y-[4rem]
+      gap-x-[1rem] gap-y-[4rem]
       md:flex md:flex-row
       md:gap-[4rem]
       xl:gap-[6rem]
@@ -145,42 +151,31 @@ xl:px-[6.2rem]
                 <h3 className="text-[1.3rem] sm:text-[1.25rem] xl:text-[1.3rem] 2xl:text-[1.5rem] font-normal text-gray-400">
                   Solutions
                 </h3>
-                <ul className="flex flex-col gap-3 xl:gap-4 2xl:gap-5 text-[1rem] sm:text-[1rem] xl:text-[1.1rem] 2xl:text-[1.3rem]">
+                <ul className="flex flex-col gap-3 xl:gap-4 2xl:gap-5 text-[0.9rem] sm:text-[1rem] xl:text-[1.1rem] 2xl:text-[1.3rem]">
                   {SOLUTIONS_LINKS.map((item) => (
-    <li
-      key={item.href}
-      onClick={() => router.push(item.href)}
-      className="cursor-pointer hover:text-gray-300 transition"
-    >
+  <li key={item.href}>
+    <Link href={item.href} className="hover:text-gray-300 transition">
       {item.label}
-    </li>
-  ))}
+    </Link>
+  </li>
+))}
                 </ul>
               </div>
 
               {/* About Us */}
               <div className="flex flex-col gap-4 xl:gap-5 2xl:gap-6">
-                <h3
-  onClick={() => router.push("/about_us")}
-  className="text-[1.3rem] sm:text-[1.25rem] xl:text-[1.3rem] 2xl:text-[1.5rem] font-normal text-gray-400 cursor-pointer hover:text-white transition"
->
+                <Link href="/about_us" className="text-[1.3rem] sm:text-[1.25rem] xl:text-[1.3rem] 2xl:text-[1.5rem] font-normal text-gray-400 hover:text-white transition">
   About Us
-</h3>
-                <ul className="flex flex-col gap-3 xl:gap-4 2xl:gap-5 text-[1rem] sm:text-[1rem] xl:text-[1.1rem] 2xl:text-[1.3rem]">
-                  <li
-  onClick={() => router.push("/about_us")}
-  className="cursor-pointer hover:text-gray-300 transition"
->
-  Company
-</li>
+</Link>
+                <ul className="flex flex-col gap-3 xl:gap-4 2xl:gap-5 text-[0.9rem] sm:text-[1rem] xl:text-[1.1rem] 2xl:text-[1.3rem]">
+                <li><Link href="/about_us" className="hover:text-gray-300 transition">Company</Link></li>
 
-<li
-  onClick={() => router.push("/sectors")}
-  className="cursor-pointer hover:text-gray-300 transition"
->
-  Sectors
-</li>
-                  <li>Locations</li>
+
+<li><Link href="/sectors" className="hover:text-gray-300 transition">Sectors</Link></li>
+<li><Link href="/location" className="hover:text-gray-300 transition">Locations</Link></li>
+<li><Link href="/awards" className="hover:text-gray-300 transition">Awards</Link></li>
+<li><Link href="/clientele" className="hover:text-gray-300 transition">Clients</Link></li>
+
                 </ul>
               </div>
 
@@ -189,34 +184,53 @@ xl:px-[6.2rem]
                 {" "}
                 <div className="flex flex-col gap-4 xl:gap-5 2xl:gap-6">
                   <ul className="flex flex-col gap-3 xl:gap-4 2xl:gap-5 text-[1.3rem] sm:text-[1.25rem] xl:text-[1.3rem] 2xl:text-[1.5rem] text-gray-400">
-  {EXTRA_LINKS.map((item) => (
-    <li
-      key={item.href}
-      onClick={() => router.push(item.href)}
-      className="cursor-pointer hover:text-white transition"
-    >
+ {EXTRA_LINKS.map((item) => (
+  <li key={item.href}>
+    <Link href={item.href} className="hover:text-white transition">
       {item.label}
-    </li>
-  ))}
+    </Link>
+  </li>
+))}
 </ul>
                 </div>
                 <div className="flex items-start">
                   <div className="flex items-center space-x-4">
-                    <Image
-                      src={Facebook}
-                      alt="Facebook"
-                      className="w-6 h-6 sm:w-7 sm:h-7"
-                    />
+                   <a
+  href="https://www.facebook.com/share/1A1a9QbceQ/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-block cursor-pointer"
+>
+  <Image
+    src={Facebook}
+    alt="Facebook"
+    className="w-6 h-6 sm:w-7 sm:h-7 pointer-events-none"
+  />
+</a>
+<a
+  href="https://www.instagram.com/realplanconsulting?igsh=MWtnYmp5cGIzeG02cQ=="
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-block cursor-pointer"
+>
                     <Image
                       src={Instagram}
                       alt="Instagram"
                       className="w-6 h-6 sm:w-7 sm:h-7"
                     />
+                    </a>
+                    <a
+  href="https://www.linkedin.com/company/realplanconsulting/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-block cursor-pointer"
+>
                     <Image
                       src={Linkedin}
                       alt="LinkedIn"
                       className="w-6 h-6 sm:w-7 sm:h-7"
                     />
+                    </a>
                   </div>
                 </div>
               </div>
@@ -230,13 +244,13 @@ xl:px-[6.2rem]
             Copyright © 2026. Real Plan Group. All Rights Reserved.
           </p>
           <div className="flex flex-wrap justify-center md:justify-start space-x-2 md:space-x-4 mt-2 md:mt-0">
-            <span className="cursor-pointer hover:text-white">
+            <Link href="/privacy_policy" className="cursor-pointer hover:text-white">
               Privacy policy
-            </span>
+            </Link>
             <span>|</span>
-            <span className="cursor-pointer hover:text-white">
+            <Link href="/terms_of_service" className="cursor-pointer hover:text-white">
               Terms of service
-            </span>
+            </Link>
           </div>
         </div>
       </div>

@@ -27,7 +27,7 @@ export default function CaseStudyDetails({ data }) {
   }, [openIndexes, items]);
 
   return (
-    <section className="mt-[1rem]">
+    <section className="mt-[1rem] bg-white">
       {items.map((item, index) => {
         const isWideLayout = (item.approach?.length || 0) > 2;
         const isOpen = openIndexes.includes(index);
@@ -87,8 +87,8 @@ export default function CaseStudyDetails({ data }) {
 
                   {/* IMAGE */}
                   <div className="w-full lg:w-[clamp(200px,22vw,286px)] lg:order-2">
-                    <Image
-                      src={Frame_1}
+                   <Image
+                      src={item.image}
                       alt={item.title}
                       className="w-full h-auto object-cover rounded-lg"
                       priority
@@ -97,35 +97,49 @@ export default function CaseStudyDetails({ data }) {
 
                   {/* CONTENT */}
                   <div className="lg:order-1">
-                    <p className="text-[#2A2A2A]/60 text-[clamp(1rem,1.8vw,1.125rem)] leading-normal mb-6">
+                    <p className="
+  text-[clamp(1rem,1.4vw,1.4rem)]
+  lg:text-[clamp(1.2rem,1.0vw,1.7rem)]
+  text-[#2A2A2A]/60
+  leading-snug
+ mb-6">
                       {item.description}
                     </p>
 
                     {/* INFO GRID */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                       <div>
-                        <h3 className="text-[clamp(1rem,1.35vw,1.32rem)] font-normal mb-1">
-                          Client
-                        </h3>
-                        <p className="text-[#2A2A2A]/60">
+                        <h3 className="text-[clamp(1.25rem,1.5vw,1.5rem)] font-normal leading-tight mb-1">
+  Client
+</h3>
+                        <p className="text-[clamp(1rem,1.4vw,1.4rem)]
+  lg:text-[clamp(1.2rem,1.0vw,1.7rem)]
+  text-[#2A2A2A]/60
+  leading-snug">
                           {item.client}
                         </p>
                       </div>
 
                       <div>
-                        <h3 className="text-[clamp(1rem,1.35vw,1.32rem)] font-normal mb-1">
+                         <h3 className="text-[clamp(1.25rem,1.5vw,1.5rem)] font-normal leading-tight mb-1">
                           Research type
                         </h3>
-                        <p className="text-[#2A2A2A]/60">
+                        <p className="text-[clamp(1rem,1.4vw,1.4rem)]
+  lg:text-[clamp(1.2rem,1.0vw,1.7rem)]
+  text-[#2A2A2A]/60
+  leading-snug">
                           {item.researchType}
                         </p>
                       </div>
 
                       <div className={isWideLayout ? "md:col-span-2" : ""}>
-                        <h3 className="text-[clamp(1rem,1.35vw,1.32rem)] font-normal mb-1">
+                         <h3 className="text-[clamp(1.25rem,1.5vw,1.5rem)] font-normal leading-tight mb-1">
                           Research approach
                         </h3>
-                        <ul className="list-disc pl-5 text-[#2A2A2A]/60 space-y-1">
+                        <ul className="list-disc pl-5 text-[clamp(1rem,1.4vw,1.4rem)]
+  lg:text-[clamp(1.2rem,1.0vw,1.7rem)]
+  text-[#2A2A2A]/60
+  leading-snug space-y-1">
                           {item.approach?.map((r, i) => (
                             <li key={i}>{r}</li>
                           ))}
@@ -135,10 +149,13 @@ export default function CaseStudyDetails({ data }) {
 
                     {/* OUTCOME */}
                     <div className="mb-[clamp(1.5rem,5vw,3rem)]">
-                      <h3 className="text-[clamp(1rem,1.35vw,1.32rem)] font-normal mb-1">
+                       <h3 className="text-[clamp(1.25rem,1.5vw,1.5rem)] font-normal leading-tight mb-1">
                         Research outcome
                       </h3>
-                      <ul className="list-disc pl-5 text-[#2A2A2A]/60 space-y-3">
+                      <ul className="list-disc pl-5 text-[clamp(1rem,1.4vw,1.4rem)]
+  lg:text-[clamp(1.2rem,1.0vw,1.7rem)]
+  text-[#2A2A2A]/60
+  leading-snug space-y-1">
                         {Object.entries(item.outcomes || {}).map(
                           ([mainPoint, subPoints], i) => (
                             <li key={i}>

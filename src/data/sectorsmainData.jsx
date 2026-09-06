@@ -1,223 +1,243 @@
-import Frame_1 from "@/assets/solution_carousel/Frame_1.webp";
+import automotive from "@/assets/Sectors/automotive.webp";
+import manufacturing from "@/assets/Sectors/manufacturing.webp";
+import banking_financial_services_and_insurance_bfsi from "@/assets/Sectors/banking_financial_services_and_insurance_bfsi.webp";
+import retail from "@/assets/Sectors/retail.webp";
+import consumer_goods_fmcg from "@/assets/Sectors/consumer_goods_fmcg.webp";
+import fashion_and_lifestyle_apparel_textile from "@/assets/Sectors/fashion_and_lifestyle_apparel_textile.webp";
+import food_and_beverages from "@/assets/Sectors/food_and_beverages.webp";
+import beauty_and_personal_care from "@/assets/Sectors/beauty_and_personal_care.webp";
+import home_appliances from "@/assets/Sectors/home_appliances.webp";
+import healthcare from "@/assets/Sectors/healthcare.webp";
+import pharmaceutical from "@/assets/Sectors/pharmaceutical.webp";
+import education_and_training from "@/assets/Sectors/education_and_training.webp";
+import real_estate_and_construction from "@/assets/Sectors/real_estate_and_construction.webp";
+import startups from "@/assets/Sectors/startups.webp";
+import technology from "@/assets/Sectors/technology.webp";
+import digital from "@/assets/Sectors/digital.webp";
+import e_commerce from "@/assets/Sectors/e_commerce.webp";
+import games_apps_and_social_media from "@/assets/Sectors/games_apps_and_social_media.webp";
+import telecommunication from "@/assets/Sectors/telecommunication.webp";
+import hotels_and_restaurants from "@/assets/Sectors/hotels_and_restaurants.webp";
+import leisure from "@/assets/Sectors/leisure.webp";
+import media_advertising_and_entertainment from "@/assets/Sectors/media_advertising_and_entertainment.webp";
+import travel_and_tourism from "@/assets/Sectors/travel_and_tourism.webp";
+import transportation_and_logistics from "@/assets/Sectors/transportation_and_logistics.webp";
+import energy_and_power from "@/assets/Sectors/energy_and_power.webp";
+import chemical from "@/assets/Sectors/chemical.webp";
+import engineering from "@/assets/Sectors/engineering.webp";
+import agriculture from "@/assets/Sectors/agriculture.webp";
+import social_sector from "@/assets/Sectors/social_sector.webp";
+import public_services from "@/assets/Sectors/public_services.webp";
 
 export const sectorsData = [
   {
-    title: "Automotive",
+    title: "AUTOMOTIVE",
     description:
-      "Market feasibility, site analysis, and demand forecasting for residential, commercial, and mixed-use developments.",
-    image: Frame_1,
+      "Driving smarter decisions with deep insights into vehicle markets, consumer trends, and industry disruptions.",
+    image: automotive,
     tag: "150+ successful projects",
   },
   {
-    title: "Manufacturing",
+    title: "MANUFACTURING",
     description:
-      "Market feasibility, location assessment, and demand analysis for schools, colleges, and educational institutions.",
-    image: Frame_1,
+      "Powering growth through data-driven intelligence on production, supply chains, and industrial dynamics.",
+    image: manufacturing,
     tag: "70+ Education setups",
   },
   {
-    title: "Banking, Financial Services and Insurance (BFSI)",
+    title: "BANKING, FINANCIAL SERVICES AND INSURANCE (BFSI)",
     description:
-      "Healthcare facility planning, patient demographics, and service line analysis for hospitals and medical centers.",
-    image: Frame_1,
+      "Decoding complex financial landscapes to help institutions stay ahead of risk, regulation, and opportunity.",
+    image: banking_financial_services_and_insurance_bfsi,
     tag: "50+ healthcare providers",
   },
-
   {
-    title: "Retail",
+    title: "RETAIL",
     description:
-      "Location strategy, catchment analysis, and consumer behaviour studies for retail chains and formats.",
-    image: Frame_1,
+      "Uncovering what moves shoppers and markets, from shelf to strategy.",
+    image: retail,
     tag: "200+ retail site assessments",
   },
   {
-    title: "Consumer Goods (FMCG)",
+    title: "CONSUMER GOODS (FMCG)",
     description:
-      "Market validation, competitive analysis, and go-to-market insights to support new ventures and growth-stage startups.",
-    image: Frame_1,
+      "Translating consumer behaviour into market intelligence that accelerates brand and category growth.",
+    image: consumer_goods_fmcg,
     tag: "100+ startups launched",
   },
   {
-    title: "Fashion and Lifestyle (Apparel & Textile)",
+    title: "FASHION AND LIFESTYLE (APPAREL & TEXTILE)",
     description:
-      "Market validation, competitive analysis, and go-to-market insights to support new ventures and growth-stage startups.",
-    image: Frame_1,
+      "Mapping the pulse of style-driven markets with research that keeps brands in trend and in demand.",
+    image: fashion_and_lifestyle_apparel_textile,
     tag: "100+ startups launched",
   },
-
   {
-    title: "Food and Beverages",
+    title: "FOOD AND BEVERAGES",
     description:
-      "Location strategy, catchment analysis, and consumer behaviour studies for retail chains and formats.",
-    image: Frame_1,
+      "From farm to fork, delivering insights that shape product, pricing, and consumer preference strategies.",
+    image: food_and_beverages,
     tag: "200+ retail site assessments",
   },
   {
-    title: "Beauty and Personal Care",
+    title: "BEAUTY AND PERSONAL CARE",
     description:
-      "Market validation, competitive analysis, and go-to-market insights to support new ventures and growth-stage startups.",
-    image: Frame_1,
+      "Illuminating the evolving world of beauty with research that helps brands connect, compete, and captivate.",
+    image: beauty_and_personal_care,
     tag: "100+ startups launched",
   },
   {
-    title: "Home Appliances",
+    title: "HOME APPLIANCES",
     description:
-      "Market validation, competitive analysis, and go-to-market insights to support new ventures and growth-stage startups.",
-    image: Frame_1,
+      "Helping brands stay plugged into consumer needs, purchase drivers, and competitive shifts in the appliances space.",
+    image: home_appliances,
     tag: "100+ startups launched",
   },
-
   {
-    title: "Healthcare",
+    title: "HEALTHCARE",
     description:
-      "Location strategy, catchment analysis, and consumer behaviour studies for retail chains and formats.",
-    image: Frame_1,
+      "Enabling smarter healthcare decisions with research that bridges patient insights, industry trends, and market realities.",
+    image: healthcare,
     tag: "200+ retail site assessments",
   },
   {
-    title: "Pharmaceutical",
+    title: "PHARMACEUTICAL",
     description:
-      "Market validation, competitive analysis, and go-to-market insights to support new ventures and growth-stage startups.",
-    image: Frame_1,
+      "Navigating complex drug markets with precision research that supports launch strategies, compliance, and competitive positioning.",
+    image: pharmaceutical,
     tag: "100+ startups launched",
   },
   {
-    title: "Education and Training",
+    title: "EDUCATION AND TRAINING",
     description:
-      "Market validation, competitive analysis, and go-to-market insights to support new ventures and growth-stage startups.",
-    image: Frame_1,
-    tag: "100+ startups launched",
-  },
-
-  {
-    title: "Real Estate and Construction",
-    description:
-      "Market feasibility, site analysis, and demand forecasting for residential, commercial, and mixed-use developments.",
-    image: Frame_1,
-    tag: "150+ successful projects",
-  },
-  {
-    title: "Startups",
-    description:
-      "Market validation, competitive analysis, and go-to-market insights to support new ventures and growth-stage startups.",
-    image: Frame_1,
+      "Shaping the future of learning with insights into student behaviour, market gaps, and institutional opportunities.",
+    image: education_and_training,
     tag: "100+ startups launched",
   },
   {
-    title: "Technology",
+    title: "REAL ESTATE AND CONSTRUCTION",
     description:
-      "Healthcare facility planning, patient demographics, and service line analysis for hospitals and medical centers.",
-    image: Frame_1,
-    tag: "50+ healthcare providers",
-  },
-
-  {
-    title: "Digital",
-    description:
-      "Market feasibility, site analysis, and demand forecasting for residential, commercial, and mixed-use developments.",
-    image: Frame_1,
+      "Grounding your property decisions in location intelligence, demand analysis, and market feasibility research.",
+    image: real_estate_and_construction,
     tag: "150+ successful projects",
   },
   {
-    title: "E-commerce",
+    title: "STARTUPS",
     description:
-      "Market feasibility, location assessment, and demand analysis for schools, colleges, and educational institutions.",
-    image: Frame_1,
-    tag: "70+ Education setups",
+      "Fuelling bold ideas with the market validation, consumer insights, and competitive intelligence every startup needs to scale.",
+    image: startups,
+    tag: "100+ startups launched",
   },
   {
-    title: "Games, Apps and Social Media",
+    title: "TECHNOLOGY",
     description:
-      "Healthcare facility planning, patient demographics, and service line analysis for hospitals and medical centers.",
-    image: Frame_1,
+      "Keeping tech businesses ahead of the curve with research on adoption trends, competitive landscapes, and emerging innovations.",
+    image: technology,
     tag: "50+ healthcare providers",
   },
-
   {
-    title: "Telecommunication",
+    title: "DIGITAL",
     description:
-      "Market feasibility, site analysis, and demand forecasting for residential, commercial, and mixed-use developments.",
-    image: Frame_1,
+      "Decoding the digital universe — from user behaviour to platform trends — for brands building in the online space.",
+    image: digital,
     tag: "150+ successful projects",
   },
   {
-    title: "Hotels and Restaurants",
+    title: "E-COMMERCE",
     description:
-      "Market feasibility, location assessment, and demand analysis for schools, colleges, and educational institutions.",
-    image: Frame_1,
+      "Turning clicks into strategy with deep research into online shopping patterns, marketplace dynamics, and customer journeys.",
+    image: e_commerce,
     tag: "70+ Education setups",
   },
   {
-    title: "Leisure",
+    title: "GAMES, APPS AND SOCIAL MEDIA",
     description:
-      "Healthcare facility planning, patient demographics, and service line analysis for hospitals and medical centers.",
-    image: Frame_1,
+      "Powering user growth and engagement strategies with insights into the fast-evolving world of gaming, apps, and social platforms.",
+    image: games_apps_and_social_media,
     tag: "50+ healthcare providers",
   },
-
   {
-    title: "Media, Advertising and Entertainment",
+    title: "TELECOMMUNICATION",
     description:
-      "Market feasibility, site analysis, and demand forecasting for residential, commercial, and mixed-use developments.",
-    image: Frame_1,
+      "Connecting business decisions to real market signals across networks, services, and subscriber behaviour.",
+    image: telecommunication,
     tag: "150+ successful projects",
   },
   {
-    title: "Travel and Tourism",
+    title: "HOTELS AND RESTAURANTS",
     description:
-      "Market feasibility, location assessment, and demand analysis for schools, colleges, and educational institutions.",
-    image: Frame_1,
+      "Serving up actionable insights on guest expectations, market positioning, and hospitality industry trends.",
+    image: hotels_and_restaurants,
     tag: "70+ Education setups",
   },
   {
-    title: "Transportation and Logistics",
+    title: "LEISURE",
     description:
-      "Healthcare facility planning, patient demographics, and service line analysis for hospitals and medical centers.",
-    image: Frame_1,
+      "Exploring what drives people's time and spending choices to help leisure businesses create compelling experiences.",
+    image: leisure,
     tag: "50+ healthcare providers",
   },
-
   {
-    title: "Energy and Power",
+    title: "MEDIA, ADVERTISING AND ENTERTAINMENT",
     description:
-      "Market feasibility, site analysis, and demand forecasting for residential, commercial, and mixed-use developments.",
-    image: Frame_1,
+      "Capturing audience attention and advertiser intelligence to help media brands craft strategies that resonate.",
+    image: media_advertising_and_entertainment,
     tag: "150+ successful projects",
   },
   {
-    title: "Chemical",
+    title: "TRAVEL AND TOURISM",
     description:
-      "Market feasibility, location assessment, and demand analysis for schools, colleges, and educational institutions.",
-    image: Frame_1,
+      "Charting the journey from traveller insight to destination strategy with comprehensive tourism market research.",
+    image: travel_and_tourism,
     tag: "70+ Education setups",
   },
   {
-    title: "Engineering",
+    title: "TRANSPORTATION AND LOGISTICS",
     description:
-      "Healthcare facility planning, patient demographics, and service line analysis for hospitals and medical centers.",
-    image: Frame_1,
+      "Moving businesses forward with research on supply chain efficiency, freight trends, and last-mile dynamics.",
+    image: transportation_and_logistics,
     tag: "50+ healthcare providers",
   },
-
   {
-    title: "Agriculture",
+    title: "ENERGY AND POWER",
     description:
-      "Market feasibility, site analysis, and demand forecasting for residential, commercial, and mixed-use developments.",
-    image: Frame_1,
+      "Illuminating energy transitions, demand patterns, and investment opportunities across conventional and renewable power markets.",
+    image: energy_and_power,
     tag: "150+ successful projects",
   },
   {
-    title: "Social Sector",
+    title: "CHEMICAL",
     description:
-      "Market feasibility, location assessment, and demand analysis for schools, colleges, and educational institutions.",
-    image: Frame_1,
+      "Delivering precise market intelligence across specialty, commodity, and performance chemicals to guide R&D and commercial strategies.",
+    image: chemical,
     tag: "70+ Education setups",
   },
   {
-    title: "Public Services",
+    title: "ENGINEERING",
     description:
-      "Healthcare facility planning, patient demographics, and service line analysis for hospitals and medical centers.",
-    image: Frame_1,
+      "Supporting engineering enterprises with market research that spans infrastructure, innovation, and industrial growth opportunities.",
+    image: engineering,
+    tag: "50+ healthcare providers",
+  },
+  {
+    title: "AGRICULTURE",
+    description:
+      "Cultivating growth strategies with insights into agri-markets, crop trends, supply chains, and rural consumer dynamics.",
+    image: agriculture,
+    tag: "150+ successful projects",
+  },
+  {
+    title: "SOCIAL SECTOR",
+    description:
+      "Enabling impact-driven organisations with evidence-based research that informs policy, programmes, and social outcomes.",
+    image: social_sector,
+    tag: "70+ Education setups",
+  },
+  {
+    title: "PUBLIC SERVICES",
+    description:
+      "Empowering government and public institutions with data-driven insights to enhance service delivery and policy effectiveness.",
+    image: public_services,
     tag: "50+ healthcare providers",
   },
 ];

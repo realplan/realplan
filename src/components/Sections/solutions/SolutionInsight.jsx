@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { Badge } from "@/components/shared";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
 
 export default function SolutionInsight({ data }) {
   if (!data) return null;
@@ -9,13 +11,111 @@ export default function SolutionInsight({ data }) {
   const { badge, title, description, quote, grid } = data;
   const primaryImage = grid?.primary?.image;
 
+  const sectionRef = useRef(null);
+  const badgeRef = useRef(null);
+  const titleRef = useRef(null);
+  const descRef = useRef(null);
+  const quoteRef = useRef(null);
+
+  const cardRefs = useRef([]);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const textTargets = [
+        badgeRef.current,
+        titleRef.current,
+        descRef.current,
+        quoteRef.current,
+      ].filter(Boolean);
+
+      gsap.set(textTargets, {
+        autoAlpha: 0,
+        clipPath: "inset(0 0 100% 0)",
+      });
+
+      gsap.set(cardRefs.current, {
+        autoAlpha: 0,
+        clipPath: "inset(0 0 100% 0)",
+      });
+
+      const tl = gsap.timeline({ paused: true });
+
+      // TEXT
+      tl.to(badgeRef.current, {
+        autoAlpha: 1,
+        clipPath: "inset(0 0 0% 0)",
+        duration: 0.5,
+      });
+
+      tl.to(
+        titleRef.current,
+        {
+          autoAlpha: 1,
+          clipPath: "inset(0 0 0% 0)",
+          duration: 0.6,
+        },
+        "-=0.2"
+      );
+
+      tl.to(
+        descRef.current,
+        {
+          autoAlpha: 1,
+          clipPath: "inset(0 0 0% 0)",
+          duration: 0.6,
+        },
+        "-=0.2"
+      );
+
+      if (quoteRef.current) {
+        tl.to(
+          quoteRef.current,
+          {
+            autoAlpha: 1,
+            clipPath: "inset(0 0 0% 0)",
+            duration: 0.5,
+          },
+          "-=0.2"
+        );
+      }
+
+      // CARDS STAGGER ANIMATION
+      tl.to(
+        cardRefs.current,
+        {
+          autoAlpha: 1,
+          clipPath: "inset(0 0 0% 0)",
+          duration: 0.6,
+          stagger: 0.15,
+          ease: "power2.out",
+        },
+        "-=0.2"
+      );
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            tl.play();
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.3 }
+      );
+
+      if (sectionRef.current) observer.observe(sectionRef.current);
+
+      return () => observer.disconnect();
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="relative text-white py-[clamp(3rem,6vw,6rem)] rounded-3xl overflow-hidden px-[clamp(1rem,2vw+0.5rem,4rem)] xl:px-[6.2rem] 2xl:px-[9rem]">
-
-      {/* BASE BLACK */}
+    <section
+      ref={sectionRef}
+      className="relative text-white py-[clamp(3rem,6vw,6rem)] rounded-3xl overflow-hidden px-[clamp(1rem,2vw+0.5rem,4rem)] xl:px-[6.2rem] 2xl:px-[9rem]"
+    >
       <div className="absolute inset-0 bg-black pointer-events-none z-0" />
-
-      {/* 🔥 MAIN GLOW (RIGHT-BOTTOM ORIGIN) */}
       <div
         className="absolute bottom-0 left-0 right-0 h-[80%] pointer-events-none z-0"
         style={{
@@ -74,79 +174,75 @@ export default function SolutionInsight({ data }) {
         }}
       />
 
-      {/* CONTENT */}
       <div className="relative z-10">
 
+        {/* TOP */}
         <div className="flex flex-col gap-8 lg:gap-12">
 
-          {/* ✅ FIXED TOP SECTION (NO GRID, NO EMPTY STRAY LINE) */}
           <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 w-full">
 
-            {/* LEFT */}
             <div className="flex flex-col gap-6 max-w-[700px]">
 
-              {badge && <Badge text={badge} />}
+              {badge && (
+                <div ref={badgeRef}>
+                  <Badge text={badge} />
+                </div>
+              )}
 
-              <h2 className="text-[clamp(1.9rem,2.85vw,2.375rem)] font-medium leading-[1.2]">
+              <h2 ref={titleRef} className="text-[clamp(1.9rem,2.85vw,2.375rem)] font-medium leading-[1.2]">
                 {title}
               </h2>
 
-              <p className="text-gray-300 text-[clamp(0.88rem,1.056vw,1.21rem)] leading-relaxed">
+              <p ref={descRef} className="text-gray-300 text-[clamp(1rem,1.4vw,1.4rem)] lg:text-[clamp(1.2rem,1.0vw,1.7rem)] leading-relaxed">
                 {description}
               </p>
 
             </div>
 
-            {/* RIGHT */}
             {quote?.highlight && (
-              <div className="flex flex-col lg:items-end text-left lg:text-right max-w-[500px]">
-
-                <p className="text-[#FF8205] text-[clamp(0.864rem,1.0368vw,1.08rem)]">
+              <div ref={quoteRef} className="flex flex-col lg:items-end text-right max-w-[500px]">
+                <p className="text-[#FF8205] text-[clamp(0.9rem,1.4vw,1.4rem)] lg:text-[clamp(1rem,1.0vw,1.7rem)]">
                   {quote.highlight}
                 </p>
-
-                {quote?.author && (
-                  <p className="text-white">— {quote.author}</p>
-                )}
-
+                {quote?.author && <p className="text-white">— {quote.author}</p>}
               </div>
             )}
 
           </div>
-
         </div>
 
-        {/* GRID (UNCHANGED) */}
+        {/* GRID */}
         {grid && (
           <div className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-2">
 
-            <div className="bg-white text-black rounded-2xl p-4 flex flex-col h-full">
-
+            {/* PRIMARY */}
+            <div
+              ref={(el) => (cardRefs.current[0] = el)}
+              className="bg-white text-black rounded-2xl p-4 flex flex-col h-full"
+            >
               <h3 className="text-[#FF8205] font-medium text-[clamp(1.957rem,2.266vw,2.3rem)] mb-[8rem]">
                 {grid.primary?.title}
               </h3>
 
-              <p className="text-black/60">
+              <p className="text-black/60 text-[clamp(0.98rem,1.35vw,1.35rem)] lg:text-[clamp(1.09rem,0.91vw,1.55rem)]">
                 {grid.primary?.description}
               </p>
 
               {primaryImage && (
                 <div className="mt-6 relative w-full flex-1 aspect-[16/9] rounded-lg overflow-hidden">
-                  <Image
-                    src={primaryImage}
-                    alt={grid.primary?.title || "primary image"}
-                    fill
-                    className="object-cover"
-                  />
+                  <Image src={primaryImage} alt="" fill className="object-cover" />
                 </div>
               )}
-
             </div>
 
+            {/* MIDDLE */}
             <div className="flex flex-col gap-2">
 
-              <div className="bg-white text-black rounded-2xl p-4 flex-1">
-                <h3 className="text-[1.75rem] mb-[8rem] font-semibold">
+              <div
+                ref={(el) => (cardRefs.current[1] = el)}
+                className="bg-white text-black rounded-2xl p-4 flex-1"
+              >
+                <h3 className="text-[1.75rem] mb-[5rem] font-semibold">
                   {grid.qualitative?.title}
                 </h3>
                 <p className="text-black/60">
@@ -154,8 +250,11 @@ export default function SolutionInsight({ data }) {
                 </p>
               </div>
 
-              <div className="bg-white text-black rounded-2xl p-4 flex-1">
-                <h3 className="text-[1.75rem] mb-[8rem] font-semibold">
+              <div
+                ref={(el) => (cardRefs.current[2] = el)}
+                className="bg-white text-black rounded-2xl p-4 flex-1"
+              >
+                <h3 className="text-[1.75rem] mb-[5rem] font-semibold">
                   {grid.quantitative?.title}
                 </h3>
                 <p className="text-black/60">
@@ -165,13 +264,17 @@ export default function SolutionInsight({ data }) {
 
             </div>
 
-            <div className="bg-white text-black rounded-2xl p-4 flex flex-col h-full">
+            {/* SECONDARY */}
+            <div
+              ref={(el) => (cardRefs.current[3] = el)}
+              className="bg-white text-black rounded-2xl p-4 flex flex-col h-full"
+            >
 
               {grid.secondary?.image && (
                 <div className="relative w-full flex-1 min-h-[220px] rounded-lg overflow-hidden">
                   <Image
                     src={grid.secondary.image}
-                    alt={grid.secondary?.title || "secondary image"}
+                    alt=""
                     fill
                     className="object-cover"
                   />
@@ -179,15 +282,12 @@ export default function SolutionInsight({ data }) {
               )}
 
               <div className="mt-4">
-
                 <h3 className="text-[#FF8205] font-medium text-[clamp(1.957rem,2.266vw,2.3rem)] mb-[8rem]">
                   {grid.secondary?.title}
                 </h3>
-
                 <p className="text-black/60">
                   {grid.secondary?.description}
                 </p>
-
               </div>
 
             </div>

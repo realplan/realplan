@@ -5,6 +5,7 @@ import {
   FoundersSection,
   AwardsSection,
   MissionVisionSection,
+  WhyChooseUs
 } from "../../components/Sections";
 import { LogoCarousel, Badge } from "../../components/shared";
 import { Footer } from "../../components/layouts";
@@ -47,7 +48,7 @@ export default function AboutUs() {
         </div>
 
         {/* CONTENT */}
-        <div className="relative z-20">
+        <div className="relative z-[100]">
           <Header
             logo={logo_orange}
             buttonVariant="glow"
@@ -56,10 +57,13 @@ export default function AboutUs() {
           />
 
           <AboutUsPage />
+          <WhyChooseUs />
           <FoundersSection />
           <AwardsSection />
           <MissionVisionSection />
-          <LogoCarousel grayscale={false} />
+          <section className="py-7">
+           <LogoCarousel grayscale={true} />
+           </section>
         </div>
       </motion.section>
 
@@ -70,7 +74,7 @@ export default function AboutUs() {
           badge: (
             <Badge text={"Let's talk business"} className="mt-[3rem]" />
           ),
-          heading: "Let's kick things off!",
+          heading: "Tell us your requirement",
           description: (
             <>
               We believe that every idea needs research. <br />
@@ -86,7 +90,7 @@ export default function AboutUs() {
             <Button
               text="Get Started"
               variant="glow"
-              onClick={() => router.push("/about_us")}
+              onClick={() => router.push("/contact_us")}
             />
           ),
         }}

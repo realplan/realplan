@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "praveen-7cba3"
-  }
+    "default": "realplam-bec79",
+    "staging": "realplam-bec79",
+    "realplan": "realplam-bec79"
+  },
+  "targets": {},
+  "etags": {}
 }

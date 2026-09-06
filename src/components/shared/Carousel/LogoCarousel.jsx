@@ -2,13 +2,44 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+
+import image_c_1 from "@/assets/logo_carousel/C (1).webp";
+import image_c_2 from "@/assets/logo_carousel/C (2).webp";
+import image_c_3 from "@/assets/logo_carousel/C (3).webp";
+import image_c_4 from "@/assets/logo_carousel/C (4).webp";
+import image_c_5 from "@/assets/logo_carousel/C (5).webp";
+import image_c_6 from "@/assets/logo_carousel/C (6).webp";
+import image_c_7 from "@/assets/logo_carousel/C (7).webp";
+import image_c_8 from "@/assets/logo_carousel/C (8).webp";
+import image_c_9 from "@/assets/logo_carousel/C (9).webp";
+import image_c_10 from "@/assets/logo_carousel/C (10).webp";
+import image_c_11 from "@/assets/logo_carousel/C (11).webp";
+import image_c_12 from "@/assets/logo_carousel/C (12).webp";
+import image_c_13 from "@/assets/logo_carousel/C (13).webp";
+import image_c_14 from "@/assets/logo_carousel/kfc.webp";
+import image_c_15 from "@/assets/logo_carousel/my gov (2).webp";
+import image_c_16 from "@/assets/logo_carousel/Queen mira.webp";
+import image_c_17 from "@/assets/logo_carousel/tg.webp";
+import image_c_18 from "@/assets/logo_carousel/hyundai.webp";
 
 const DEFAULT_LOGOS = [
-  "/kauvery.webp",
-  "/cushman.webp",
-  "/lt.webp",
-  "/Mask_group.webp",
-  "/image 3.webp",
+  image_c_1,
+  image_c_2,
+  image_c_4,
+  image_c_6,
+  image_c_7,
+  image_c_8,
+  image_c_9,
+  image_c_10,
+  image_c_11,
+  image_c_12,
+  image_c_13,
+  image_c_14,
+  image_c_15,
+  image_c_16,
+  image_c_17,
+  image_c_18,
 ];
 
 export default function LogoCarousel({
@@ -50,23 +81,29 @@ export default function LogoCarousel({
     };
   }, [logos]);
 
-  // ✅ FIXED: define marqueeLogos
   const marqueeLogos =
     Array.isArray(logos) && repeatCount > 0
       ? Array(repeatCount).fill(logos).flat()
       : logos;
 
+  const duration = width / speed;
+
   return (
     <section
       ref={wrapperRef}
-      className={`w-full bg-white overflow-hidden ${className}`}
+      className={`relative w-full bg-transparent overflow-hidden ${className}`}
     >
+      {/* LEFT FADE */}
+      <div className="pointer-events-none absolute left-0 top-0 h-full w-[clamp(2rem,6vw,20rem)] z-10 bg-gradient-to-r from-white to-transparent" />
+
+<div className="pointer-events-none absolute right-0 top-0 h-full w-[clamp(2rem,6vw,20rem)] z-10 bg-gradient-to-l from-white to-transparent" />
+
       <motion.div
         ref={containerRef}
-        className="flex items-center gap-16 w-max"
+        className="flex items-center gap-10 w-max"
         animate={{ x: [0, -width] }}
         transition={{
-          duration: speed,
+          duration,
           ease: "linear",
           repeat: Infinity,
         }}
@@ -76,12 +113,12 @@ export default function LogoCarousel({
             key={i}
             className="h-20 w-40 flex items-center justify-center flex-shrink-0"
           >
-            <img
+            <Image
               src={logo}
               alt={`logo-${i}`}
-              className={`max-h-full max-w-full object-contain ${
-                grayscale ? "grayscale" : ""
-              }`}
+              width={160}
+              height={80}
+              className={`max-h-full max-w-full object-contain transition-all duration-300`}
             />
           </div>
         ))}

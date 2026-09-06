@@ -1,33 +1,65 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { motion, useMotionValue, useSpring } from "framer-motion";
+
 import { Header } from "@/components/shared";
 import logo_orange from "@/assets/Company_Logo/logo_orange.webp";
 import { SectorsHero } from "../../components/Sections";
-import LogoCarousel from "@/components/shared/Carousel/LogoCarousel";
 import { Footer } from "@/components/layouts";
-import { Badge } from "@/components/shared";
-import { Button } from "@/components/ui";
+import { Badge, LogoCarousel } from "@/components/shared";
+import { Button, GridReveal } from "@/components/ui";
 
 export default function Sectors() {
   const router = useRouter();
 
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const smoothX = useSpring(mouseX, { stiffness: 120, damping: 20 });
+  const smoothY = useSpring(mouseY, { stiffness: 120, damping: 20 });
+
   return (
     <>
-    <Header
-  logo={logo_orange}
-  buttonVariant="glow"
-  logoRedirect="/"
-  color="white"
-/>
-      <SectorsHero />
-      <LogoCarousel grayscale={true} />
+
+      <motion.section
+        className="relative w-full [overflow-x:clip]"
+        onPointerMove={(e) => {
+          const rect = e.currentTarget.getBoundingClientRect();
+          mouseX.set(e.clientX - rect.left);
+          mouseY.set(e.clientY - rect.top);
+        }}
+      >
+        {/* Grid Background */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <GridReveal
+            x={smoothX}
+            y={smoothY}
+            theme="golden_orange"
+            radius="16.25rem"
+          />
+        </div>
+
+        {/* Page Content */}
+        <div className="relative z-[100]">
+            <Header
+        logo={logo_orange}
+        buttonVariant="glow"
+        logoRedirect="/"
+        color="white"
+      />
+      </div>
+          <SectorsHero />
+          <section className="py-7">
+           <LogoCarousel grayscale={true} />
+           </section>
+      </motion.section>
 
       <Footer
         hand={true}
         topContent={{
           badge: <Badge text={"Let's talk business"} />,
-          heading: "Let's kick things off!",
+          heading: "Tell us your requirement",
           description: (
             <>
               We believe that every idea needs research. <br />
@@ -43,7 +75,7 @@ export default function Sectors() {
             <Button
               text="Get Started"
               variant="glow"
-              onClick={() => router.push("/about_us")}
+              onClick={() => router.push("/contact_us")}
               className="py-[clamp(0.5rem,2vw,0.5rem)]"
             />
           ),

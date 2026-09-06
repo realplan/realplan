@@ -48,16 +48,28 @@ export default function CaseStudiesHero() {
 </motion.h1>
 
       {/* PARAGRAPH 1 */}
-      <motion.p
+      <motion.h3
   initial={{ opacity: 0, y: 20 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.7, delay: 0.2 }}
-  className="text-black/60 leading-normal text-[1.2rem]/80 sm:text-[1.2rem] mb-[2rem]"
+  className="
+    text-[clamp(1rem,1.4vw,1.4rem)]
+    lg:text-[clamp(1.2rem,1.0vw,1.7rem)]
+    text-[#2A2A2A]/90
+    leading-relaxed
+    mb-[2rem]
+  "
 >
-  At Real Plan Consulting, our work is defined by results. Each case study reflects how {" "}
-  <span className="block">we combine in-depth research, strategic thinking, and practical execution to solve </span>
-  <span className="block">complex business challenges.</span>
-</motion.p>
+  At Real Plan Consulting, our work is defined by results. Each case study reflects how{" "}
+
+  <br className="hidden lg:block" />
+
+  we combine in-depth research, strategic thinking, and practical execution to solve{" "}
+
+  <br className="hidden lg:block" />
+
+  complex business challenges.
+</motion.h3>
     </div>
   );
 }

@@ -5,19 +5,117 @@ import { Button } from "../../ui";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { sectorsData } from "@/data/sectorsData";
-import {
-  motion,
-  useMotionValue,
-  useSpring
-} from "framer-motion";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
 
 export default function SectorSection() {
-    const router = useRouter();
+  const router = useRouter();
+  const revealScopeRef = useRef(null);
+  const badgeDesktopRef = useRef(null);
+  const badgeMobileRef = useRef(null);
+  const buttonDesktopRef = useRef(null);
+  const buttonMobileRef = useRef(null);
+  const headingRefs = useRef([]);
+  const subtitleRef = useRef(null);
+
+  useEffect(() => {
+    let observer;
+
+    const ctx = gsap.context(() => {
+      const isMobile = window.matchMedia("(max-width: 639px)").matches;
+      const revealTargets = [
+        isMobile ? badgeMobileRef.current : badgeDesktopRef.current,
+        ...headingRefs.current,
+        subtitleRef.current,
+        isMobile ? buttonMobileRef.current : buttonDesktopRef.current,
+      ].filter(Boolean);
+
+      gsap.set(revealTargets, {
+        autoAlpha: 0,
+        x: -18,
+        clipPath: "inset(0 100% 0 0)",
+      });
+
+      const timeline = gsap.timeline({
+        paused: true,
+        defaults: {
+          duration: 0.84,
+          ease: "power2.out",
+        },
+      });
+
+      timeline.to(revealTargets[0], {
+        autoAlpha: 1,
+        x: 0,
+        clipPath: "inset(0 0% 0 0)",
+        duration: 0.74,
+      });
+
+      timeline.to(
+        headingRefs.current,
+        {
+          autoAlpha: 1,
+          x: 0,
+          clipPath: "inset(0 0% 0 0)",
+          stagger: 0.12,
+        },
+        "-=0.32"
+      );
+
+      timeline.to(
+        subtitleRef.current,
+        {
+          autoAlpha: 1,
+          x: 0,
+          clipPath: "inset(0 0% 0 0)",
+          duration: 0.8,
+        },
+        "-=0.16"
+      );
+
+      const activeButton = isMobile ? buttonMobileRef.current : buttonDesktopRef.current;
+      if (activeButton) {
+        timeline.to(
+          activeButton,
+          {
+            autoAlpha: 1,
+            x: 0,
+            clipPath: "inset(0 0% 0 0)",
+            duration: 0.78,
+          },
+          "-=0.4"
+        );
+      }
+
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            timeline.play();
+            observer?.disconnect();
+          }
+        },
+        {
+          threshold: 0.12,
+          rootMargin: "0px 0px -6% 0px",
+        }
+      );
+
+      if (revealScopeRef.current) {
+        observer.observe(revealScopeRef.current);
+      }
+    }, revealScopeRef);
+
+    return () => {
+      observer?.disconnect();
+      ctx.revert();
+    };
+  }, []);
 
   return (
     <div
-  className="relative px-[clamp(1rem,4vw,6rem)] xl:px-[clamp(6rem,5vw,9rem)] mt-[clamp(4rem,6vw,6rem)] overflow-hidden"
+  ref={revealScopeRef}
+  className="relative px-[clamp(1rem,4vw,6rem)] xl:px-[clamp(6rem,5vw,9rem)] overflow-hidden"
 >
     <div className="absolute inset-0 z-0 pointer-events-none h-full w-full">
 
@@ -25,20 +123,32 @@ export default function SectorSection() {
 
       {/* Top */}
       <div className="hidden sm:flex sm:items-center sm:justify-between">
-        <Badge text="Industries We Serve" />
+        <div ref={badgeDesktopRef} className="will-change-transform">
+          <Badge text="Industries We Serve" />
+        </div>
+        <div ref={buttonDesktopRef} className="will-change-transform">
         <Button text="More sectors" variant="white" onClick={() => {
   console.log("clicked");
   router.push("/sectors");
 }} />
+        </div>
       </div>
 
       <div className="sm:hidden">
-        <Badge text="Industries We Serve" />
+        <div ref={badgeMobileRef} className="w-fit will-change-transform">
+          <Badge text="Industries We Serve" />
+        </div>
       </div>
 
       {/* Heading */}
-<h2 className="text-[clamp(1.55rem,1.2vw+1rem,3rem)] text-[#6B6B6B] leading-[clamp(1.2,1.2vw,1.3)] mt-[clamp(0.5rem,0.8vw,0.9rem)]">        <span className="text-black">
-          Sectors we are specialise in
+<h2 className="text-[clamp(1.55rem,1.2vw+1rem,3rem)] text-[#6B6B6B] leading-[clamp(1.2,1.2vw,1.3)] mt-[clamp(0.5rem,0.8vw,0.9rem)]">
+        <span
+          ref={(el) => {
+            headingRefs.current[0] = el;
+          }}
+          className="block text-black will-change-transform"
+        >
+          Sectors we specialise in
         </span>
       </h2>
 
@@ -47,13 +157,16 @@ export default function SectorSection() {
   lg:text-[clamp(1.2rem,1.0vw,1.7rem)]
   text-[#2A2A2A]/90
   leading-relaxed
-  mt-[0.7rem]
-  lg:mt-[0.6rem]
-">        Deep expertise across diverse sectors delivering measurable results.
+">
+        <span ref={subtitleRef} className="block will-change-transform">
+          Deep expertise across diverse sectors delivering measurable results.
+        </span>
       </h3>
 
       <div className="sm:hidden mt-[clamp(0.8rem,1vw,1.2rem)]">
+        <div ref={buttonMobileRef} className="w-fit will-change-transform">
         <Button text="More sectors" variant="white" onClick={() => router.push("/sectors")} />
+        </div>
       </div>
 
       {/* GRID */}
@@ -113,24 +226,24 @@ export default function SectorSection() {
                 </p>
 
                 {/* Pill */}
-                <div className="mt-auto">
-                  <div
-                    className="
-                      inline-flex items-center justify-center
-                      px-[1rem]
-                      h-[clamp(1.6rem,1.5vw,1.9375rem)]
-                      rounded-full
-                      border border-black
-                      bg-transparent text-black
-                      text-[clamp(0.8rem,0.5vw+0.5rem,0.95rem)]
-                      transition-colors duration-300
-                      group-hover:border-white group-hover:text-white
-                      whitespace-nowrap
-                    "
-                  >
-                    {item.tag}
-                  </div>
-                </div>
+{/*                 <div className="mt-auto"> */}
+{/*                   <div */}
+{/*                     className=" */}
+{/*                       inline-flex items-center justify-center */}
+{/*                       px-[1rem] */}
+{/*                       h-[clamp(1.6rem,1.5vw,1.9375rem)] */}
+{/*                       rounded-full */}
+{/*                       border border-black */}
+{/*                       bg-transparent text-black */}
+{/*                       text-[clamp(0.8rem,0.5vw+0.5rem,0.95rem)] */}
+{/*                       transition-colors duration-300 */}
+{/*                       group-hover:border-white group-hover:text-white */}
+{/*                       whitespace-nowrap */}
+{/*                     " */}
+{/*                   > */}
+{/*                     {item.tag} */}
+{/*                   </div> */}
+{/*                 </div> */}
 
               </div>
             </div>

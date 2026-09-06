@@ -10,6 +10,11 @@ const VARIANT_CONFIG = {
     arrow: "text-black",
   },
   white: {
+    button: "bg-white text-black border border-black",
+    circle: "bg-black",
+    arrow: "text-white",
+  },
+transparent: {
     button: "bg-transparent text-black border border-black",
     circle: "bg-black",
     arrow: "text-white",

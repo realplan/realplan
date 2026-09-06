@@ -1,39 +1,45 @@
-import Frame_1 from "@/assets/solution_carousel/Frame_1.webp";
+import real_estate from "@/assets/Sector section/real_estate.webp";
+import education from "@/assets/Sector section/education.webp";
+import healthcare from "@/assets/Sector section/healthcare.webp";
+import retail from "@/assets/Sector section/retail.webp";
+import startups from "@/assets/Sector section/startups.webp";
+import consumer_goods_fmcg from "@/assets/Sectors/consumer_goods_fmcg.webp";
+
 
 export const sectorsData = [
   {
-    title: "Real Estate",
+    title: "CONSUMER GOODS (FMCG)",
     description:
-      "Market feasibility, site analysis, and demand forecasting for residential, commercial, and mixed-use developments.",
-    image: Frame_1,
-    tag: "150+ successful projects",
+      "Translating consumer behaviour into market intelligence that accelerates brand and category growth.",
+    image: consumer_goods_fmcg,
+    tag: "100+ startups launched",
   },
   {
-    title: "Education",
+    title: "RETAIL",
     description:
-      "Market feasibility, location assessment, and demand analysis for schools, colleges, and educational institutions.",
-    image: Frame_1,
-    tag: "70+ Education setups",
-  },
-  {
-    title: "Healthcare",
-    description:
-      "Healthcare facility planning, patient demographics, and service line analysis for hospitals and medical centers.",
-    image: Frame_1,
-    tag: "50+ healthcare providers",
-  },
-  {
-    title: "Retail",
-    description:
-      "Location strategy, catchment analysis, and consumer behaviour studies for retail chains and formats.",
-    image: Frame_1,
+      "Uncovering what moves shoppers and markets, from shelf to strategy.",
+    image: retail,
     tag: "200+ retail site assessments",
   },
   {
-    title: "Startups",
+    title: "STARTUPS",
     description:
-      "Market validation, competitive analysis, and go-to-market insights to support new ventures and growth-stage startups.",
-    image: Frame_1,
+      "Fuelling bold ideas with the market validation, consumer insights, and competitive intelligence every startup needs to scale.",
+    image: startups,
     tag: "100+ startups launched",
+  },
+  {
+    title: "HEALTHCARE",
+    description:
+      "Enabling smarter healthcare decisions with research that bridges patient insights, industry trends, and market realities.",
+    image: healthcare,
+    tag: "50+ healthcare providers",
+  },
+ {
+    title: "REAL ESTATE",
+    description:
+      "Grounding your property decisions in location intelligence, demand analysis, and market feasibility research.",
+    image: real_estate,
+    tag: "150+ successful projects",
   },
 ];

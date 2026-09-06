@@ -5,12 +5,12 @@ import { sectorsData } from "@/data/sectorsmainData";
 
 export default function SectorsHero() {
   return (
-    <div className="px-[clamp(1rem,4vw,6rem)] xl:px-[clamp(6rem,5vw,9rem)] py-10 flex flex-col items-center text-center">
+    <div className="px-[clamp(1rem,4vw,6rem)] xl:px-[clamp(6rem,5vw,9rem)] py-10 flex flex-col items-center text-center z-[30]">
 
       {/* Top Content */}
       <Badge text="Industries We Serve" />
 
-      <h2 className="text-[clamp(1.4rem,1.5vw+0.8rem,3rem)] text-[#2A2A2A] leading-[1.2] mt-[2rem]">
+      <h2 className="text-[clamp(1.6rem,3.5vw,2.3rem)] text-[#2A2A2A] leading-[1.2] mt-[2rem]">
         Sectors we are specialise in
       </h2>
 
@@ -52,7 +52,7 @@ export default function SectorsHero() {
               </div>
 
               {/* Content */}
-              <div className="relative z-10 bg-[#EDEDED] p-4 sm:p-5 flex flex-col h-full rounded-2xl group-hover:bg-transparent transition-colors duration-300">
+              <div className="relative z-10 bg-[#EDEDED] p-4 sm:p-5 flex flex-col h-full rounded-2xl group-hover:bg-transparent transition-colors duration-300 gap-1">
 
                 {/* Image */}
                 <div className="relative w-full h-[clamp(16.2rem,20vw,22rem)] rounded-md overflow-hidden mb-4">
@@ -65,34 +65,34 @@ export default function SectorsHero() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-[#FF8205] text-[clamp(1.2rem,1vw+0.8rem,1.75rem)] font-medium leading-snug group-hover:text-black transition-colors duration-300">
+                <h3 className="text-[#FF8205] text-[clamp(1.2rem,1vw+0.8rem,1.55rem)] font-medium leading-snug group-hover:text-black transition-colors duration-300">
                   {item.title}
                 </h3>
 
-                {/* Description */}
+{/*                 Description */}
                 <p className="text-gray-600 text-[clamp(0.85rem,0.55vw+0.63rem,1rem)] leading-relaxed mb-4">
                   {item.description}
                 </p>
 
                 {/* Pill */}
-                <div className="mt-auto">
-                  <div
-                    className="
-                      inline-flex items-center justify-center
-                      px-[1rem]
-                      h-[clamp(1.6rem,1.5vw,1.9375rem)]
-                      rounded-full
-                      border border-black
-                      bg-transparent text-black
-                      text-[clamp(0.8rem,0.5vw+0.5rem,0.95rem)]
-                      transition-colors duration-300
-                      group-hover:border-white group-hover:text-white
-                      whitespace-nowrap
-                    "
-                  >
-                    {item.tag}
-                  </div>
-                </div>
+{/*                 <div className="mt-auto"> */}
+{/*                   <div */}
+{/*                     className=" */}
+{/*                       inline-flex items-center justify-center */}
+{/*                       px-[1rem] */}
+{/*                       h-[clamp(1.6rem,1.5vw,1.9375rem)] */}
+{/*                       rounded-full */}
+{/*                       border border-black */}
+{/*                       bg-transparent text-black */}
+{/*                       text-[clamp(0.8rem,0.5vw+0.5rem,0.95rem)] */}
+{/*                       transition-colors duration-300 */}
+{/*                       group-hover:border-white group-hover:text-white */}
+{/*                       whitespace-nowrap */}
+{/*                     " */}
+{/*                   > */}
+{/*                     {item.tag} */}
+{/*                   </div> */}
+{/*                 </div> */}
 
               </div>
             </div>

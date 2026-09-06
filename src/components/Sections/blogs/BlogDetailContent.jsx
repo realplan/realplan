@@ -40,7 +40,7 @@ export default function BlogDetailContent({ content }) {
       <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-[clamp(2rem,4vw+1rem,5.1923rem)] px-[clamp(1rem,2vw+0.5rem,4rem)] xl:px-[6.2rem] 2xl:px-[9rem]">
 
         {/* LEFT - TOC */}
-        <aside className="hidden lg:block sticky top-28 h-fit font-medium">
+        <aside className="hidden lg:block sticky top-28 h-fit font-medium ">
           <ul className="space-y-4 text-sm">
             {headings.map((h) => (
               <li key={h.id}>
@@ -78,7 +78,7 @@ export default function BlogDetailContent({ content }) {
                 return (
                   <p
                     key={index}
-                    className="text-black/60 text-[clamp(0.9rem,1.5vw,1.05rem)] leading-relaxed"
+                    className="text-black/60 text-[clamp(1rem,1.4vw,1.4rem)] lg:text-[clamp(1.2rem,1.0vw,1.7rem)] leading-relaxed"
                   >
                     {block.text}
                   </p>
@@ -93,7 +93,8 @@ export default function BlogDetailContent({ content }) {
   {block.items.map((item, i) => (
     <li
       key={i}
-      className="text-black/60 text-[clamp(0.9rem,1.5vw,1.05rem)] leading-relaxed"
+      className="text-black/60 text-[clamp(1rem,1.4vw,1.4rem)]
+  lg:text-[clamp(1.2rem,1.0vw,1.7rem)] leading-relaxed"
     >
       {item}
     </li>

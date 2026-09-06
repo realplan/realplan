@@ -2,16 +2,20 @@
 
 import { ContactUsPage } from "../../components/Sections";
 import { Footer } from "../../components/layouts";
-import { Badge } from "../../components/shared";
+import { Badge, LogoCarousel } from "../../components/shared";
 import { Button, GridReveal } from "../../components/ui";
 import { Header } from "@/components/shared";
 import logo_orange from "@/assets/Company_Logo/logo_orange.webp";
 import { TestimonialCarousel } from "../../components/shared/Carousel/TestimonialCarousel";
+import { useRouter } from "next/navigation";
+
 
 import { useMotionValue, useSpring, motion } from "framer-motion";
 
 export default function ContactUs() {
   // ✅ GRID LOGIC
+  const router = useRouter();
+
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -40,7 +44,7 @@ export default function ContactUs() {
         </div>
 
         {/* CONTENT */}
-        <div className="relative z-20">
+        <div className="relative z-[100]">
           <Header
             logo={logo_orange}
             buttonVariant="glow"
@@ -51,6 +55,9 @@ export default function ContactUs() {
           <ContactUsPage />
           {/* <TestimonialInfo /> */}
           <TestimonialCarousel />
+          <section className="py-7">
+           <LogoCarousel grayscale={true} />
+           </section>
         </div>
       </motion.section>
 
@@ -72,10 +79,13 @@ export default function ContactUs() {
             </>
           ),
           headingClass:
-            "text-[2.5rem] sm:text-[2.5rem] font-normal text-white",
+  "text-[clamp(1.6rem,4vw,2.5rem)] font-normal text-white",
           descriptionClass:
-            "text-base sm:text-[1.375rem] max-w-full sm:max-w-xl mx-auto text-white/90",
-          cta: <Button text="About Us" variant="glow" />,
+  "text-[clamp(0.95rem,2.2vw,1.375rem)] max-w-full sm:max-w-xxl mx-auto text-white/90",
+          cta: <Button text="About Us" variant="glow"
+          onClick={() => router.push("/about_us")}
+           className="px-[clamp(0.8rem,2vw,1rem)]"
+           />,
         }}
       />
     </>

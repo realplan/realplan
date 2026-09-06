@@ -7,15 +7,59 @@ import {
   CaseStudiesOutcomes,
   AlternativeSolutions,
 } from "@/components/Sections/case_studies";
-import LogoCarousel from "../../components/shared/Carousel/LogoCarousel";
 import { Footer } from "@/components/layouts";
-import { Badge } from "@/components/shared";
+import { Badge, LogoCarousel } from "@/components/shared";
 import { Button, GridReveal } from "@/components/ui";
 import { useRouter } from "next/navigation";
 import { useMotionValue, useSpring, motion } from "framer-motion";
+import { useState, useSyncExternalStore } from "react";
+import { CASE_STUDIES } from "@/data/caseStudiesData";
 
-export default function AboutUs() {
+const getMatchingCategory = (category) => {
+  if (!category) return null;
+
+  return CASE_STUDIES.find(
+    (item) =>
+      item.category.trim().toLowerCase() === category.trim().toLowerCase()
+  )?.category;
+};
+
+const getCategoryFromCurrentUrl = () => {
+  if (typeof window === "undefined") return null;
+
+  return new URLSearchParams(window.location.search).get("category");
+};
+
+const subscribeToUrlChanges = (callback) => {
+  window.addEventListener("popstate", callback);
+  window.addEventListener("case-studies-url-change", callback);
+
+  return () => {
+    window.removeEventListener("popstate", callback);
+    window.removeEventListener("case-studies-url-change", callback);
+  };
+};
+
+export default function Page() {
   const router = useRouter();
+  const categoryFromUrl = useSyncExternalStore(
+    subscribeToUrlChanges,
+    getCategoryFromCurrentUrl,
+    () => null
+  );
+  const matchingUrlCategory = getMatchingCategory(categoryFromUrl);
+  const [selectedCategoryOverride, setSelectedCategoryOverride] =
+    useState(null);
+  const selectedCategory =
+    selectedCategoryOverride ?? matchingUrlCategory ?? CASE_STUDIES[0].category;
+
+  const handleCategoryChange = (category) => {
+    setSelectedCategoryOverride(category);
+    router.replace(`/case_studies/?category=${encodeURIComponent(category)}`, {
+      scroll: false,
+    });
+    window.dispatchEvent(new Event("case-studies-url-change"));
+  };
 
   // ✅ SAME AS BLOGS PAGE
   const mouseX = useMotionValue(0);
@@ -28,7 +72,7 @@ export default function AboutUs() {
     <>
       {/* ✅ GRID REVEAL SECTION */}
       <motion.section
-        className="relative w-full overflow-hidden"
+        className="relative w-full [overflow-x:clip]"
         onPointerMove={(e) => {
           const rect = e.currentTarget.getBoundingClientRect();
           mouseX.set(e.clientX - rect.left);
@@ -46,7 +90,7 @@ export default function AboutUs() {
         </div>
 
         {/* CONTENT */}
-        <div className="relative z-20">
+        <div className="relative z-[100]">
           <Header
             logo={logo_orange}
             buttonVariant="glow"
@@ -55,9 +99,17 @@ export default function AboutUs() {
           />
 
           <CaseStudiesHero />
-          <CaseStudiesOutcomes />
-          <AlternativeSolutions />
-          <LogoCarousel grayscale={true} />
+          <CaseStudiesOutcomes
+            selectedCategory={selectedCategory}
+            onCategoryChange={handleCategoryChange}
+          />
+          <AlternativeSolutions
+            selectedCategory={selectedCategory}
+            onCategorySelect={handleCategoryChange}
+          />
+          <section className="py-7">
+            <LogoCarousel grayscale={true} />
+          </section>
         </div>
       </motion.section>
 
@@ -66,7 +118,7 @@ export default function AboutUs() {
         hand={true}
         topContent={{
           badge: <Badge text={"Let's talk business"} />,
-          heading: "Let's kick things off!",
+          heading: "Tell us your requirement",
           description: (
             <>
               We believe that every idea needs research. <br />
@@ -82,7 +134,7 @@ export default function AboutUs() {
             <Button
               text="Get Started"
               variant="glow"
-              onClick={() => router.push("/about_us")}
+              onClick={() => router.push("/contact_us")}
               className="py-[clamp(0.5rem,2vw,0.5rem)]"
             />
           ),

@@ -3,9 +3,8 @@
 import { BlogsHero, BlogsList } from "@/components/Sections/blogs";
 import { Header } from "@/components/shared";
 import logo_orange from "@/assets/Company_Logo/logo_orange.webp";
-import LogoCarousel from "../../components/shared/Carousel/LogoCarousel";
 import { Footer } from "@/components/layouts";
-import { Badge } from "@/components/shared";
+import { Badge, LogoCarousel } from "@/components/shared";
 import { Button, GridReveal } from "@/components/ui";
 import { useRouter } from "next/navigation";
 import { useMotionValue, useSpring, motion } from "framer-motion";
@@ -24,7 +23,7 @@ export default function Blogs() {
     <>
       {/* ✅ ONLY THIS PART HAS GRID REVEAL */}
       <motion.section
-        className="relative w-full overflow-hidden"
+        className="relative w-full"
         onPointerMove={(e) => {
           const rect = e.currentTarget.getBoundingClientRect();
           mouseX.set(e.clientX - rect.left);
@@ -37,12 +36,12 @@ export default function Blogs() {
             x={smoothX}
             y={smoothY}
             theme="golden_orange"
-            radius="16.25rem"
+            radius="10rem"
           />
         </div>
 
         {/* CONTENT */}
-        <div className="relative z-20">
+        <div className="relative z-[100]">
           <Header
             logo={logo_orange}
             buttonVariant="glow"
@@ -52,7 +51,9 @@ export default function Blogs() {
 
           <BlogsHero />
           <BlogsList />
-          <LogoCarousel grayscale={true} />
+          <section className="py-7">
+           <LogoCarousel grayscale={true} />
+           </section>
         </div>
       </motion.section>
 
@@ -61,7 +62,7 @@ export default function Blogs() {
         hand={true}
         topContent={{
           badge: <Badge text={"Let's talk business"} />,
-          heading: "Let's kick things off!",
+          heading: "Tell us your requirement",
           description: (
             <>
               We believe that every idea needs research. <br />
@@ -77,7 +78,7 @@ export default function Blogs() {
             <Button
               text="Get Started"
               variant="glow"
-              onClick={() => router.push("/about_us")}
+              onClick={() => router.push("/contact_us")}
             />
           ),
         }}

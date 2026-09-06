@@ -1,6 +1,6 @@
 "use client";
 
-import { useMotionValue, useSpring, motion } from "framer-motion";
+import { useMotionValue, useSpring } from "framer-motion";
 import { GridReveal } from "@/components/ui";
 
 export default function GridRevealWrapper({ children }) {
@@ -11,7 +11,7 @@ export default function GridRevealWrapper({ children }) {
   const smoothY = useSpring(mouseY, { stiffness: 120, damping: 20 });
 
   return (
-    <motion.section
+    <section
       className="relative w-full overflow-hidden"
       onPointerMove={(e) => {
         const rect = e.currentTarget.getBoundingClientRect();
@@ -19,8 +19,9 @@ export default function GridRevealWrapper({ children }) {
         mouseY.set(e.clientY - rect.top);
       }}
     >
-      {/* GRID */}
-      <div className="absolute inset-0 z-10 pointer-events-none">
+
+      {/* BACKGROUND */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <GridReveal
           x={smoothX}
           y={smoothY}
@@ -29,8 +30,11 @@ export default function GridRevealWrapper({ children }) {
         />
       </div>
 
-      {/* CONTENT */}
-      <div className="relative z-20">{children}</div>
-    </motion.section>
+      {/* CONTENT LAYER */}
+      <div className="relative z-10">
+        {children}
+      </div>
+
+    </section>
   );
 }
